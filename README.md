@@ -2,39 +2,37 @@
 东海游戏iOS SDKDemo  https://github.com/donghaigame/iOS-DHSDKDemo.git
 
 
-下载demo
-==============
-https://github.com/donghaigame/iOS-DHSDKDemo.git
 
 使用方法
 ==============
 
-1.打开DHSDKDemo.xcodeproj  将 frameworks文件 内的DHSDK.framework和DHSDK.xcassets添加(拖放)到你的工程目录中。
+1. 打开DHSDKDemo.xcodeproj  将 frameworks文件 内的DHSDK.framework和DHSDK.xcassets添加(拖放)到你的工程目录中。
 <img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkMaster.png"><br/>
 2. 项目Targets下找到General。
 TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据自需，是否横竖屏切换 ）例如在AppDelegate.m, 也可在plist种设置。
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-return UIInterfaceOrientationMaskPortrait;
+   return UIInterfaceOrientationMaskPortrait;
 }
 ```
 <img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkSeleted.png"><br/>
 
-勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
+3. 勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
 并且在Embedded Binaries和Linked Frameworks and Libraries链接 frameworks:
 <img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkAddSouse.png"><br/>
 
-3. 其中必要pilst 属性 如下：
-<key>NSPhotoLibraryUsageDescription</key>
-<string>需要获取您的相册权限用以保存账号密码</string>
-<key>NSPhotoLibraryAddUsageDescription</key>
-<string>需要获取您的相册权限用以保存账号密码</string>
-<key>NSAppTransportSecurity</key>
-<dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
-</dict>
+4. 其中必要pilst 属性 如下：
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>需要获取您的相册权限用以保存账号密码</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>需要获取您的相册权限用以保存账号密码</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    </dict>
 
 4. 导入 `<DHSDK/DHSDK.h>`。
 ```
@@ -44,16 +42,15 @@ return UIInterfaceOrientationMaskPortrait;
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [self.window makeKeyAndVisible];
+    [[DHSDK share] it:1
+    subId:1
+    apiKey:@"ddba75a7871543628652fb20996be609"
+    success:^{
 
-[self.window makeKeyAndVisible];
-[[DHSDK share] it:1
-subId:1
-apiKey:@"ddba75a7871543628652fb20996be609"
-success:^{
+    } failure:^(int errcode, NSString *errorMessage) {
 
-} failure:^(int errcode, NSString *errorMessage) {
-
-}];
+    }];
 }
 ```
 
@@ -62,7 +59,7 @@ success:^{
 #### 获取SDK版本号
 
 ```objective-c
-[[DHSDK share] v];
+  [[DHSDK share] v];
 ```
 
 #### 登陆方法
@@ -70,7 +67,7 @@ success:^{
 ```objective-c
 - (void)loginButtonClick
 {
-[[DHSDK share] l];
+   [[DHSDK share] l];
 }
 ```
 
@@ -79,34 +76,34 @@ success:^{
 ```objective-c
 
 [[DHSDK share] setLSB:^(DHUser *user, DHLSS lss) {
-NSString *userId    = user.userId;
-NSString *userName  = user.username;
-NSString *accessToken = user.accessToken;
-if (lss == DHLSBL) {
-NSLog(@"从哪登录来的");
-}
-else if (lss == DHLSBR){
-NSLog(@"从哪注册来的");
-}
+    NSString *userId    = user.userId;
+    NSString *userName  = user.username;
+    NSString *accessToken = user.accessToken;
+    if (lss == DHLSBL) {
+    NSLog(@"从哪登录来的");
+    }
+    else if (lss == DHLSBR){
+    NSLog(@"从哪注册来的");
+    }
 
-//获取当前登录时间。
-NSDate *date = [NSDate date];
-NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-[formatter setDateStyle:NSDateFormatterMediumStyle];
-[formatter setTimeStyle:NSDateFormatterShortStyle];
-[formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-NSString *dateTime = [formatter stringFromDate:date];
+    //获取当前登录时间。
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:date];
 
 
-//上报角色
-DHRole *role = [DHRole new];
-[role setServerId:@"serverId1"];
-[role setServerName:@"东海国际"];
-[role setRoleId:@"89757"];
-[role setRoleName:@"东海龙王"];
-[role setRoleLevel:1];
-[role setLoginTime:dateTime];
-[[DHSDK share] rl:role];
+    //上报角色
+    DHRole *role = [DHRole new];
+    [role setServerId:@"serverId1"];
+    [role setServerName:@"东海国际"];
+    [role setRoleId:@"89757"];
+    [role setRoleName:@"东海龙王"];
+    [role setRoleLevel:1];
+    [role setLoginTime:dateTime];
+    [[DHSDK share] rl:role];
 
 }];
 
@@ -117,7 +114,7 @@ DHRole *role = [DHRole new];
 ```objective-c
 [[DHSDK share] setLB:^{
 
-//code
+  //code
 }];
 ```
 
@@ -126,19 +123,19 @@ DHRole *role = [DHRole new];
 ```objective-c
 - (void)payButtonClick
 {
-DHOrder *order = [DHOrder new];
-order.serverId =@"app_101";
-order.totalFee = 1;
-order.roleId = @"500000";
-order.roleName =@"luzj";
-order.productName =@"60钻石";
-CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
-order.customInfo = orderId;
-order.cpOrderId = orderId;
-order.productDescription = @"60个钻石";
-order.productId = @"com.dhajdh.qjfs18010321";
-[[DHSDK share] z:order];
+    DHOrder *order = [DHOrder new];
+    order.serverId =@"app_101";
+    order.totalFee = 1;
+    order.roleId = @"500000";
+    order.roleName =@"luzj";
+    order.productName =@"60钻石";
+    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
+    order.customInfo = orderId;
+    order.cpOrderId = orderId;
+    order.productDescription = @"60个钻石";
+    order.productId = @"com.dhajdh.qjfs18010321";
+    [[DHSDK share] z:order];
 }
 ```
 
@@ -147,7 +144,7 @@ order.productId = @"com.dhajdh.qjfs18010321";
 ```objective-c
 [[DHSDK share] setFuckVCB:^{
 
-//code
+  //code
 }];
 ```
 
@@ -156,19 +153,19 @@ order.productId = @"com.dhajdh.qjfs18010321";
 [[DHSDK share] setCOB:^(DHZC zc) {
 
 
-//code
+    //code
 
-/*
+    /*
 
-zc 枚举 对应回调相应事件
-DHZCreateOrderFail      = 1,    //创建订单失败
-DHZDoesNotExistProduct  = 2,    //商品信息不存在
-DHZUnknowFail           = 3,    //未知错误
-DHZVerifyReceiptSucceed = 4,    //支付验证成功
-DHZVerifyReceiptFail    = 5,    //支付验证失败
-DHZURLFail              = 6     //未能连接苹果商店 
+    zc 枚举 对应回调相应事件
+    DHZCreateOrderFail      = 1,    //创建订单失败
+    DHZDoesNotExistProduct  = 2,    //商品信息不存在
+    DHZUnknowFail           = 3,    //未知错误
+    DHZVerifyReceiptSucceed = 4,    //支付验证成功
+    DHZVerifyReceiptFail    = 5,    //支付验证失败
+    DHZURLFail              = 6     //未能连接苹果商店 
 
-*/
+    */
 
 
 }];
