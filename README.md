@@ -7,7 +7,9 @@
 ==============
 
 1. 打开DHSDKDemo.xcodeproj  将 frameworks文件 内的DHSDK.framework和DHSDK.xcassets添加(拖放)到你的工程目录中。
-<img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkMaster.png"><br/>
+
+![image]https://github.com/donghaigame/iOS-DHSDKDem/raw/master/Snapshots/FrameworkMaster.png
+
 2. 项目Targets下找到General。
 TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据自需，是否横竖屏切换 ）例如在AppDelegate.m, 也可在plist种设置。
 ```
@@ -16,23 +18,21 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
    return UIInterfaceOrientationMaskPortrait;
 }
 ```
-<img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkSeleted.png"><br/>
+![image]https://github.com/donghaigame/iOS-DHSDKDem/raw/master/Snapshots/FrameworkSeleted.png
 
 3. 勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
 并且在Embedded Binaries和Linked Frameworks and Libraries链接 frameworks:
-<img src="https://github.com/donghaigame/iOS-DHSDKDem/blob/master/Snapshots/FrameworkAddSouse.png"><br/>
+
+![image]https://github.com/donghaigame/iOS-DHSDKDem/raw/master/Snapshots/FrameworkAddSouse.png
 
 4. 其中必要pilst 属性 如下：
 
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>需要获取您的相册权限用以保存账号密码</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>需要获取您的相册权限用以保存账号密码</string>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    </dict>
+    NSPhotoLibraryUsageDescription -key
+    需要获取您的相册权限用以保存账号密码 -string
+    NSPhotoLibraryAddUsageDescription - key
+    需要获取您的相册权限用以保存账号密码 - string
+    NSAppTransportSecurity
+        NSAllowsArbitraryLoads - YES
 
 4. 导入 `<DHSDK/DHSDK.h>`。
 ```
