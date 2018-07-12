@@ -11,7 +11,6 @@
 
 @interface ViewController ()
 {
-    UIImageView *_bgImageView;
     NSArray *_btnTitles;
     
 }
@@ -22,52 +21,63 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     NSLog(@"SDK版本%@", [[DHSDK share] v]);
     
     [super viewDidLoad];
- 
-    UIImageView *bgImageView = [UIImageView new];
-    [bgImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.view addSubview:bgImageView];
-    _bgImageView = bgImageView;
+
+    [self.view setBackgroundColor:[UIColor brownColor]];
     
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    _btnTitles = @[@"初始化",@"登 陆",@"支 付",@"用户中心",@"注 销"];
     
-    _btnTitles = @[@"初始化",@"登 陆",@"买个表",@"注 销",@"用户中心",@"修改地址"];
+    CGFloat topMar = 40;
+    CGFloat lefMar = 40;
+    CGFloat itemMar = 18;
+    CGFloat itemWidth = 120;
+    CGFloat itemHeight = 38;
+    UIImage *btbImage = [UIImage imageNamed:@"Button_Normal"];
+    UIImage *btnImageHighlighted = [UIImage imageNamed:@"Button_Highlighted"];
     
     [_btnTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
        
         UIButton *tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [tempBtn setFrame:CGRectMake(140, 60 + (36 + 20) * idx , 100, 36)];
+        [tempBtn setFrame:CGRectMake(lefMar, topMar + (itemHeight + itemMar) * idx , itemWidth, itemHeight)];
         [tempBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [tempBtn setBackgroundColor:[UIColor brownColor]];
         [tempBtn setTitle:obj forState:UIControlStateNormal];
         [tempBtn setTag:idx];
+        [tempBtn setBackgroundImage:btbImage forState:UIControlStateNormal];
+        [tempBtn setBackgroundImage:btnImageHighlighted forState:UIControlStateSelected];
         [tempBtn addTarget:self action:@selector(tempBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:tempBtn];
         
     }];
     
     
-    UILabel *serverLabel = [UILabel new];
-    [serverLabel setTag:11];
-    [serverLabel setTextColor:[UIColor redColor]];
-    [serverLabel setFrame:CGRectMake(140, 60 + (36 + 20) * 7, 300, 36)];
-    [serverLabel setText:[DHSDK share].serverURL];
-    [self.view addSubview:serverLabel];
+    [self methForCallBack];
+
+}
+
+#pragma mark - 相关回调事件
+
+- (void)methForCallBack{
     
+    //注销 - 回调
     [[DHSDK share] setLB:^{
-        NSLog(@"注销事件的回调");
+        
+       //code
     }];
     
+    //IAP支付 - 回调
     [[DHSDK share] setCOB:^(DHZC zc) {
-        NSLog(@"IAP支付回调 - %ld", (long)zc);
+        
+        //code
     }];
     
+    //支付页面关闭 - 回调
     [[DHSDK share] setFuckVCB:^{
-        NSLog(@"支付页面关闭的回调");
+        
+        //code
     }];
-    
     
     //登陆成功回调 ，获取个人信息进行相应处理
     [[DHSDK share] setLSB:^(DHUser *user, DHLSS lss) {
@@ -81,11 +91,11 @@
         if (lss == DHLSBL) {
             NSLog(@"登陆来源");
         }
-        else if (lss == DHLSBR)
-        {
+        
+        else if (lss == DHLSBR){
             NSLog(@"注册来源");
         }
-
+        
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -104,10 +114,11 @@
         [[DHSDK share] rl:role];
         
     }];
+    
 }
 
 
-#pragma mark 按钮点击事件
+#pragma mark - 按钮点击事件
 
 - (void)tempBtnClick:(UIButton *)sender{
     
@@ -116,7 +127,6 @@
         
         //初始化
         case 0:{
-            
             [[DHSDK share] it:1
                         subId:1
                        apiKey:@"ba472a72208cb671639d94a54cbb017d"
@@ -135,7 +145,7 @@
             
         }
             break;
-        //买个表
+        //支付
         case 2:{
             DHOrder *order = [DHOrder new];
             order.serverId =@"app_101";
@@ -148,39 +158,29 @@
             order.customInfo = orderId;
             order.cpOrderId = orderId;
             order.productDescription = @"60个钻石";
-            order.productId = @"com.dhajdh.qjfs18010321";
+            order.productId = @"com.dh.sdkdemo.600";
             [[DHSDK share] z:order];
             
         }
             break;
-        //注销
+        //用户中心
         case 3:{
-            [[DHSDK share] lo];
+            [[DHSDK share] C];
            
         }
             break;
-        //用户中心
+        //注销
         case 4:{
-            [[DHSDK share] C];
+            [[DHSDK share] lo];
             
         }
             break;
-        //改变地址
-        case 5:{
-            
-            if ([@"https://api.mikegame.cn" isEqualToString:[[DHSDK share] serverURL]]) {
-                [[DHSDK share] setServerURL:@"http://192.168.25.151:8083"];
-            }else if ([@"http://192.168.25.151:8083" isEqualToString:[[DHSDK share] serverURL]]) {
-                [[DHSDK share] setServerURL:@"https://api.mikegame.cn"];
-            }
-            [[self.view viewWithTag:11] setText:[DHSDK share].serverURL];
-            
-        }
-            break;
+    
       
     }
     
 }
+
 
 
 

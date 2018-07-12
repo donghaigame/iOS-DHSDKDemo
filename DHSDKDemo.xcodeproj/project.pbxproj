@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B11D8B720F38E1E003B8B68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8B620F38E1E003B8B68 /* AppDelegate.m */; };
+		3B11D8B720F38E1E003B8B68 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8B620F38E1E003B8B68 /* AppDelegate.mm */; };
 		3B11D8BA20F38E1E003B8B68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8B920F38E1E003B8B68 /* ViewController.m */; };
 		3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BB20F38E1E003B8B68 /* Main.storyboard */; };
 		3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */; };
-		3B11D8C220F38E1F003B8B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8C020F38E1F003B8B68 /* LaunchScreen.storyboard */; };
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
 		3B11D8CF20F38E45003B8B68 /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */; };
-		3B11D92B20F604B9003B8B68 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D92A20F604B9003B8B68 /* DHSDK.framework */; };
-		3B11D92C20F604EE003B8B68 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D92A20F604B9003B8B68 /* DHSDK.framework */; };
-		3B11D92D20F604EE003B8B68 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D92A20F604B9003B8B68 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B11D93520F7645C003B8B68 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D93420F7645C003B8B68 /* DHSDK.framework */; };
+		3B11D93620F76665003B8B68 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D93420F7645C003B8B68 /* DHSDK.framework */; };
+		3B11D93720F76665003B8B68 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11D93420F7645C003B8B68 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B11D92D20F604EE003B8B68 /* DHSDK.framework in Embed Frameworks */,
+				3B11D93720F76665003B8B68 /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,16 +35,15 @@
 /* Begin PBXFileReference section */
 		3B11D8B220F38E1E003B8B68 /* DHSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DHSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B11D8B520F38E1E003B8B68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3B11D8B620F38E1E003B8B68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3B11D8B620F38E1E003B8B68 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		3B11D8B820F38E1E003B8B68 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3B11D8B920F38E1E003B8B68 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3B11D8BC20F38E1E003B8B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3B11D8C120F38E1F003B8B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B11D8C320F38E1F003B8B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B11D8C420F38E1F003B8B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
-		3B11D92A20F604B9003B8B68 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
+		3B11D93420F7645C003B8B68 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B11D92B20F604B9003B8B68 /* DHSDK.framework in Frameworks */,
-				3B11D92C20F604EE003B8B68 /* DHSDK.framework in Frameworks */,
+				3B11D93520F7645C003B8B68 /* DHSDK.framework in Frameworks */,
+				3B11D93620F76665003B8B68 /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +80,11 @@
 			children = (
 				3B11D8CB20F38E45003B8B68 /* framework */,
 				3B11D8B520F38E1E003B8B68 /* AppDelegate.h */,
-				3B11D8B620F38E1E003B8B68 /* AppDelegate.m */,
+				3B11D8B620F38E1E003B8B68 /* AppDelegate.mm */,
 				3B11D8B820F38E1E003B8B68 /* ViewController.h */,
 				3B11D8B920F38E1E003B8B68 /* ViewController.m */,
 				3B11D8BB20F38E1E003B8B68 /* Main.storyboard */,
 				3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */,
-				3B11D8C020F38E1F003B8B68 /* LaunchScreen.storyboard */,
 				3B11D8C320F38E1F003B8B68 /* Info.plist */,
 				3B11D8C420F38E1F003B8B68 /* main.m */,
 			);
@@ -97,7 +94,7 @@
 		3B11D8CB20F38E45003B8B68 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				3B11D92A20F604B9003B8B68 /* DHSDK.framework */,
+				3B11D93420F7645C003B8B68 /* DHSDK.framework */,
 				3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */,
 			);
 			path = framework;
@@ -162,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B11D8CF20F38E45003B8B68 /* DHSDK.xcassets in Resources */,
-				3B11D8C220F38E1F003B8B68 /* LaunchScreen.storyboard in Resources */,
 				3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */,
 				3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */,
 			);
@@ -177,7 +173,7 @@
 			files = (
 				3B11D8BA20F38E1E003B8B68 /* ViewController.m in Sources */,
 				3B11D8C520F38E1F003B8B68 /* main.m in Sources */,
-				3B11D8B720F38E1E003B8B68 /* AppDelegate.m in Sources */,
+				3B11D8B720F38E1E003B8B68 /* AppDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,14 +186,6 @@
 				3B11D8BC20F38E1E003B8B68 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3B11D8C020F38E1F003B8B68 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B11D8C120F38E1F003B8B68 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -321,15 +309,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: bintao chen (P59DHJ8QP2)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: bintao chen (P59DHJ8QP2)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WB6BHNN5L5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,15 +337,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: bintao chen (P59DHJ8QP2)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: bintao chen (P59DHJ8QP2)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WB6BHNN5L5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

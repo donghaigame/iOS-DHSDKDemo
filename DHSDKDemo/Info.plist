@@ -29,8 +29,6 @@
 	<string>需要获取您的相册权限用以保存账号密码</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要获取您的相册权限用以保存账号密码</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
