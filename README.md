@@ -37,6 +37,12 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 4. 导入 `<DHSDK/DHSDK.h>`。
 ```
 #import <SDKDemo/SDKDemo.h>
+
+ *  @param Id        游戏编号
+ *  @param subId     游戏子包
+ *  @param apiKey    游戏密钥
+ 
+注：这些参数届时商务会与你们对接提供，予以替换
 ```
 
 ```objective-c
