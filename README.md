@@ -7,7 +7,7 @@
 
 1. 打开DHSDKDemo.xcodeproj  将 frameworks文件 内的DHSDK.framework和DHSDK.xcassets添加(拖放)到你的工程目录中。
 
-![图1](https://github.com/donghaigame/iOS-DHSDKDemo/raw/mast/Snapshots/FrameworkMaster.png)
+![image](https://github.com/donghaigame/iOS-DHSDKDemo/raw/master/Snapshots/FrameworkMaster.png)
 
 2. 项目Targets下找到General。
 TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据自需，是否横竖屏切换 ）例如在AppDelegate.m, 也可在plist种设置。
