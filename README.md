@@ -43,7 +43,7 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 ```
 import <SDKDemo/SDKDemo.h>
 ``` 
-###注：这些参数届时商务会与你们对接提供，予以替换
+### 注：这些参数届时商务会与你们对接提供，予以替换
 
 ```
  *  @param Id        游戏编号
@@ -54,15 +54,15 @@ import <SDKDemo/SDKDemo.h>
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [self.window makeKeyAndVisible];
-    [[DHSDK share] it:1
-   			    subId:1
-   			   apiKey:@"ddba75a7871543628652fb20996be609"
-  			  success:^{
-
- 		    } failure:^(int errcode, NSString *errorMessage) {
-
-    }];
+      [self.window makeKeyAndVisible];
+      [[DHSDK share] it:1
+                  subId:1
+                 apiKey:@"ba472a72208cb671639d94a54cbb017d"
+                success:^{
+                    (@"初始化成功");
+                } failure:^(int errcode, NSString *errorMessage) {
+                    (@"初始化失败");
+                }];
 }
 ```
 
