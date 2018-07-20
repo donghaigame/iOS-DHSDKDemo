@@ -30,6 +30,9 @@
     
     _btnTitles = @[@"初始化",@"登 陆",@"支 付",@"用户中心",@"注 销"];
     
+   
+    
+    //家就是的看见爱上的
     CGFloat topMar = 40;
     CGFloat lefMar = 40;
     CGFloat itemMar = 18;
@@ -88,6 +91,8 @@
         NSLog(@"userName    -- %@", userName);
         NSLog(@"accessToken -- %@", accessToken);
         
+    //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆（大致流程）
+        
         if (lss == DHLSBL) {
             NSLog(@"登陆来源");
         }
@@ -95,6 +100,10 @@
         else if (lss == DHLSBR){
             NSLog(@"注册来源");
         }
+        
+        
+    
+        
         
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -117,6 +126,11 @@
     
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [[DHSDK share] l];
+
+}
 
 #pragma mark - 按钮点击事件
 
@@ -147,9 +161,11 @@
             break;
         //支付
         case 2:{
+            
+            
             DHOrder *order = [DHOrder new];
             order.serverId =@"app_101";
-            order.totalFee = 1;
+            order.totalFee = 600;
             order.roleId = @"500000";
             order.roleName =@"luzj";
             order.productName =@"60钻石";
@@ -158,7 +174,7 @@
             order.customInfo = orderId;
             order.cpOrderId = orderId;
             order.productDescription = @"60个钻石";
-            order.productId = @"com.dh.sdkdemo.600";
+            order.productId = @"com.xians.chkou_6";
             [[DHSDK share] z:order];
             
         }

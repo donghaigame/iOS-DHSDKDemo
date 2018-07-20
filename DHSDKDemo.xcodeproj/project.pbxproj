@@ -12,9 +12,8 @@
 		3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BB20F38E1E003B8B68 /* Main.storyboard */; };
 		3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */; };
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
-		3B11D8CF20F38E45003B8B68 /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */; };
-		3B11DA1620FDC4AD003B8B68 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11DA1520FDC4AD003B8B68 /* DHSDK.framework */; };
-		3B11DA1820FDC4C6003B8B68 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B11DA1520FDC4AD003B8B68 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B8EB83121017AF9005B926D /* DHSDK.xcassets */; };
+		3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B11DA1820FDC4C6003B8B68 /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,8 +39,8 @@
 		3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B11D8C320F38E1F003B8B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B11D8C420F38E1F003B8B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
-		3B11DA1520FDC4AD003B8B68 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
+		3B8EB83121017AF9005B926D /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
+		3B8EB83F2101F189005B926D /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B11DA1620FDC4AD003B8B68 /* DHSDK.framework in Frameworks */,
+				3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,8 +90,8 @@
 		3B11D8CB20F38E45003B8B68 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				3B11DA1520FDC4AD003B8B68 /* DHSDK.framework */,
-				3B11D8CD20F38E45003B8B68 /* DHSDK.xcassets */,
+				3B8EB83F2101F189005B926D /* DHSDK.framework */,
+				3B8EB83121017AF9005B926D /* DHSDK.xcassets */,
 			);
 			path = framework;
 			sourceTree = "<group>";
@@ -156,8 +154,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B11D8CF20F38E45003B8B68 /* DHSDK.xcassets in Resources */,
 				3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */,
+				3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */,
 				3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,7 +242,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7a1d0568-e6ee-442b-b55b-57e0f7ab24ed";
+				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -297,7 +295,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "7a1d0568-e6ee-442b-b55b-57e0f7ab24ed";
+				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -308,8 +306,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: bintao chen (P59DHJ8QP2)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: bintao chen (P59DHJ8QP2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WB6BHNN5L5;
 				ENABLE_BITCODE = NO;
@@ -325,7 +323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dh.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a1d0568-e6ee-442b-b55b-57e0f7ab24ed";
+				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
 				PROVISIONING_PROFILE_SPECIFIER = "com.dh.sdkdemo dev profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -336,8 +334,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: bintao chen (P59DHJ8QP2)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: bintao chen (P59DHJ8QP2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WB6BHNN5L5;
 				ENABLE_BITCODE = NO;
@@ -353,7 +351,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dh.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a1d0568-e6ee-442b-b55b-57e0f7ab24ed";
+				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
 				PROVISIONING_PROFILE_SPECIFIER = "com.dh.sdkdemo dev profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

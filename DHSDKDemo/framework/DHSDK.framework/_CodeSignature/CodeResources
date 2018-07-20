@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		37f6CBi8u5I0JYlvylnUvbApMIg=
+		GiB9ORQ5CHhmzO+cAcnuBAWzmyk=
 		</data>
 		<key>Headers/DHOrder.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/DHRole.h</key>
 		<data>
-		nmqqmpB+a+8FvQNCa2pLo+RQE0M=
+		pO2VB+PQ64hX7eR8AW8d89zoJS4=
 		</data>
 		<key>Headers/DHSDK.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1CF8rlP8R8WElwUsyY87aAqJSUo=
+		xSnfjoUGquU8O6qkT4NhDiH+lXc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,11 +39,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			37f6CBi8u5I0JYlvylnUvbApMIg=
+			GiB9ORQ5CHhmzO+cAcnuBAWzmyk=
 			</data>
 			<key>hash2</key>
 			<data>
-			8UnbPR+6cFbcv0XlJz1IazRf/PtltcojHyl8qIPGie8=
+			2q4unugL6AQXC3igiSyLEEp3baevC34EHs0stqJaBOk=
 			</data>
 		</dict>
 		<key>Headers/DHOrder.h</key>
@@ -61,11 +61,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nmqqmpB+a+8FvQNCa2pLo+RQE0M=
+			pO2VB+PQ64hX7eR8AW8d89zoJS4=
 			</data>
 			<key>hash2</key>
 			<data>
-			hLOTPRpU3+6guCjturFCI9xCBzpZTXKkCEkWJw3r6dw=
+			uGqo7P2VrHjYZz40+OtzaHGNqSsnp4Z1IoiiNMYCeD4=
 			</data>
 		</dict>
 		<key>Headers/DHSDK.h</key>

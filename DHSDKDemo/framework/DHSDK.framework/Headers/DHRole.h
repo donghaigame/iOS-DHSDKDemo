@@ -40,4 +40,21 @@
 @property (nonatomic, strong) NSString *loginTime;
 
 
+#pragma mark - 增加
+/**
+ *  当前角色身上拥有的游戏币数量
+ */
+@property (nonatomic, strong) NSString *strMoneyNum;
+
+/**
+ *  用户id
+ */
+@property (nonatomic, strong) NSString *userId;
+
+/**
+ *  统计类型
+ */
+@property (nonatomic, strong) NSString *type;
+
+
 @end
