@@ -16,7 +16,9 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-   return UIInterfaceOrientationMaskPortrait;
+//如果只支持横屏的游戏，以免SDK显示界面异常，请使用
+return UIInterfaceOrientationMaskLandscape ;
+
 }
 ```
 
@@ -92,10 +94,10 @@ import <SDKDemo/SDKDemo.h>
     NSString *userName  = user.username;
     NSString *accessToken = user.accessToken;
     if (lss == DHLSBL) {
-    NSLog(@"从哪登录来的");
+    NSLog(@"登陆回调");
     }
     else if (lss == DHLSBR){
-    NSLog(@"从哪注册来的");
+    NSLog(@"注册-》登陆回调");
     }
 
     //获取当前登录时间。
@@ -135,9 +137,10 @@ import <SDKDemo/SDKDemo.h>
 ```objective-c
 - (void)payButtonClick
 {
+  //totalFee 与 prdouctId = 金额与id 要一一对应，否则苹果支付会无法支付成功
     DHOrder *order = [DHOrder new];
     order.serverId =@"app_101";
-    order.totalFee = 1;
+    order.totalFee = 600;
     order.roleId = @"500000";
     order.roleName =@"luzj";
     order.productName =@"60钻石";
