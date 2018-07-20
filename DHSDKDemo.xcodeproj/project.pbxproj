@@ -14,6 +14,8 @@
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
 		3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B8EB83121017AF9005B926D /* DHSDK.xcassets */; };
 		3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; };
+		3B8EB8412101F202005B926D /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; };
+		3B8EB8422101F202005B926D /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3B8EB8422101F202005B926D /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */,
+				3B8EB8412101F202005B926D /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
