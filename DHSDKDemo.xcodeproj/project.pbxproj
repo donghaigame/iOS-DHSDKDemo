@@ -13,9 +13,8 @@
 		3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */; };
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
 		3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B8EB83121017AF9005B926D /* DHSDK.xcassets */; };
-		3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; };
-		3B8EB8412101F202005B926D /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; };
-		3B8EB8422101F202005B926D /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8EB83F2101F189005B926D /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3BD090CB2108AF2600DE809B /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD090CA2108AF2600DE809B /* DHSDK.framework */; };
+		3BD090CD2108AF3900DE809B /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD090CA2108AF2600DE809B /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B8EB8422101F202005B926D /* DHSDK.framework in Embed Frameworks */,
+				3BD090CD2108AF3900DE809B /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,7 +42,7 @@
 		3B11D8C320F38E1F003B8B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B11D8C420F38E1F003B8B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B8EB83121017AF9005B926D /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
-		3B8EB83F2101F189005B926D /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
+		3BD090CA2108AF2600DE809B /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B8EB8402101F189005B926D /* DHSDK.framework in Frameworks */,
-				3B8EB8412101F202005B926D /* DHSDK.framework in Frameworks */,
+				3BD090CB2108AF2600DE809B /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +92,7 @@
 		3B11D8CB20F38E45003B8B68 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				3B8EB83F2101F189005B926D /* DHSDK.framework */,
+				3BD090CA2108AF2600DE809B /* DHSDK.framework */,
 				3B8EB83121017AF9005B926D /* DHSDK.xcassets */,
 			);
 			path = framework;
@@ -313,7 +311,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WB6BHNN5L5;
+				DEVELOPMENT_TEAM = ZQS9GNTA96;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,10 +323,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dh.sdkdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhsdk.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
-				PROVISIONING_PROFILE_SPECIFIER = "com.dh.sdkdemo dev profile";
+				PROVISIONING_PROFILE = "ab9a4ba8-afac-4a5e-8814-531f6618e2f9";
+				PROVISIONING_PROFILE_SPECIFIER = dh.sdk.deveopment;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -341,7 +339,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WB6BHNN5L5;
+				DEVELOPMENT_TEAM = ZQS9GNTA96;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -353,10 +351,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dh.sdkdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhsdk.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1118337c-c859-4dcf-bb24-36951380a3d6";
-				PROVISIONING_PROFILE_SPECIFIER = "com.dh.sdkdemo dev profile";
+				PROVISIONING_PROFILE = "ab9a4ba8-afac-4a5e-8814-531f6618e2f9";
+				PROVISIONING_PROFILE_SPECIFIER = dh.sdk.deveopment;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

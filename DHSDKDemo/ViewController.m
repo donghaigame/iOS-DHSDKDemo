@@ -30,8 +30,6 @@
     
     _btnTitles = @[@"初始化",@"登 陆",@"支 付",@"用户中心",@"注 销"];
     
-   
-    
     //家就是的看见爱上的
     CGFloat topMar = 40;
     CGFloat lefMar = 40;
@@ -93,6 +91,8 @@
         
     //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
         
+        
+        
         if (lss == DHLSBL) {
             NSLog(@"登陆");
         }
@@ -100,10 +100,7 @@
         else if (lss == DHLSBR){
             NSLog(@"注册——》 登陆");
         }
-        
-        
-    
-        
+
         
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -145,6 +142,7 @@
                       }];
             
             
+            
         }
             break;
         //登陆
@@ -158,17 +156,17 @@
             
             
             DHOrder *order = [DHOrder new];
-            order.serverId =@"app_101";
+            order.serverId =@"205";
             order.totalFee = 600;
-            order.roleId = @"500000";
-            order.roleName =@"luzj";
-            order.productName =@"60钻石";
+            order.roleId = @"1000001325020563";
+            order.roleName =@"费思远";
+            order.productName =@"60元宝";
             CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
             NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
             order.customInfo = orderId;
             order.cpOrderId = orderId;
-            order.productDescription = @"60个钻石";
-            order.productId = @"com.dh.sdkdemo.600";
+            order.productDescription = @"60个砖石";
+            order.productId = @"com.dh.sdkdemo.6";
             [[DHSDK share] z:order];
             
         }

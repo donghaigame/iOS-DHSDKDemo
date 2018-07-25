@@ -134,7 +134,6 @@ typedef void (^cOB)(DHZC zc);
  */
 - (void)setLB:(lB)lB;
 
-
 /**
  *  登陆成功回调
  */
@@ -161,4 +160,7 @@ typedef void (^cOB)(DHZC zc);
  *  隐藏浮动按钮
  */
 - (void)DF;
+
+
+
 @end
