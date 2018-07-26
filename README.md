@@ -140,7 +140,7 @@ import <SDKDemo/SDKDemo.h>
   //totalFee 与 prdouctId = 金额与id 要一一对应，否则苹果支付会无法支付成功
     DHOrder *order = [DHOrder new];
     order.serverId =@"app_101";
-    order.totalFee = 600;
+    order.totalFee = 600;//(单位：分)
     order.roleId = @"500000";
     order.roleName =@"luzj";
     order.productName =@"60钻石";
@@ -149,7 +149,7 @@ import <SDKDemo/SDKDemo.h>
     order.customInfo = orderId;
     order.cpOrderId = orderId;
     order.productDescription = @"60个钻石";
-    order.productId = @"com.dhajdh.qjfs18010321";
+    order.productId = @"com.dhajdh.6";
     [[DHSDK share] z:order];
 }
 ```
