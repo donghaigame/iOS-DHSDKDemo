@@ -11,7 +11,7 @@
 
 
 2. 项目Targets下找到General。
-TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据自需，是否横竖屏切换 ）例如在AppDelegate.m, 也可在plist种设置。
+TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支持横竖屏 根据自需）例如在AppDelegate.m, 也可在plist种设置。
 
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
