@@ -65,6 +65,7 @@
     //注销 - 回调
     [[DHSDK share] setLB:^{
         
+    
        //code
     }];
     
