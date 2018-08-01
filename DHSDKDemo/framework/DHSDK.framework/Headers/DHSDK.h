@@ -15,10 +15,10 @@ FOUNDATION_EXPORT double MKSDKVersionNumber;
 
 //! Project version string for SDK.
 FOUNDATION_EXPORT const unsigned char MKSDKVersionString[];
-            
+
 // In this header, you should import all the public headers of your framework using statements like #import <MKSDK/PublicHeader.h>
 
-typedef NS_ENUM(NSInteger, DHZC) {
+typedef NS_ENUM(NSInteger, DHPayType) {
     DHZCreateOrderFail      = 1,    //创建订单失败
     DHZDoesNotExistProduct  = 2,    //商品信息不存在
     DHZUnknowFail           = 3,    //未知错误
@@ -35,10 +35,10 @@ typedef NS_ENUM(NSInteger, DHLSS) {
 
 
 
-typedef void (^lSB)(DHUser *user, DHLSS lSS);
-typedef void (^lB)(void);
-typedef void (^fuckVCB)(void);
-typedef void (^cOB)(DHZC zc);
+typedef void (^LoginSuccessBack)(DHUser *user, DHLSS lSS);
+typedef void (^LogoutCallBack)(void);
+typedef void (^PayColseBack)(void);
+typedef void (^PayCallBack)(DHPayType payType);
 
 
 @interface DHSDK : NSObject
@@ -65,10 +65,10 @@ typedef void (^cOB)(DHZC zc);
  *  登陆成功后当前用户信息
  */
 @property (nonatomic, strong, readonly) DHUser *currUser;
-@property (nonatomic, copy) lSB lSB;
-@property (nonatomic, copy) lB lB;
-@property (nonatomic, copy) fuckVCB fuckVCB;
-@property (nonatomic, copy) cOB cOB;
+@property (nonatomic, copy) LoginSuccessBack loginCallBack;
+@property (nonatomic, copy) LogoutCallBack logoutCallBack;
+@property (nonatomic, copy) PayColseBack payColseBack;
+@property (nonatomic, copy) PayCallBack payCallBack;
 
 /**
  *  获取DHSDK单例
@@ -96,11 +96,12 @@ typedef void (^cOB)(DHZC zc);
    success:(void (^)(void))successBlock
    failure:(void (^)(int errcode, NSString *errorMessage))errorBlock;
 
+
 /**
- *   用户登陆
+ *   用户回调
  *
  */
-- (void)l;
+- (void)loginSucessCallBack:(LoginSuccessBack )callBack;
 
 
 /**
@@ -108,59 +109,37 @@ typedef void (^cOB)(DHZC zc);
  *
  *  @param order    订单信息
  */
-- (void)z:(DHOrder *)order;
+- (void)createOrder:(DHOrder *)order;
 
 
 /**
  *  注销用户登陆接口
  */
-- (void)lo;
+
+- (void)logout:(LogoutCallBack )callBack;
 
 /**
  *  用户中心
  */
-- (void)C;
+- (void)userCenter;
 
 /**
  *  上报角色
  *
  *  @param role    游戏角色
  */
-- (void)rl:(DHRole *)role;
-
-
-/**
- *  注销事件回调
- */
-- (void)setLB:(lB)lB;
-
-/**
- *  登陆成功回调
- */
-- (void)setLSB:(lSB)lSB;
-
-/**
- *  支付页面关闭回调
- */
-- (void)setFuckVCB:(fuckVCB)fuckVCB;
-
-
-/**
- *  IAP支付回调
- */
-- (void)setCOB:(cOB)cOB;
+- (void)reportRole:(DHRole *)role;
 
 
 /**
  *  展示浮动按钮
  */
-- (void)SF;
+- (void)showFloatBtn;
 
 /**
  *  隐藏浮动按钮
  */
-- (void)DF;
-
+- (void)disFloatBtn;
 
 
 @end

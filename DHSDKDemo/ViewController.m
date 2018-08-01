@@ -54,73 +54,32 @@
     }];
     
     
-    [self methForCallBack];
+    [self payMethCallBack];
+
 
 }
 
 #pragma mark - 相关回调事件
 
-- (void)methForCallBack{
+
+- (void)payMethCallBack{
     
-    //注销 - 回调
-    [[DHSDK share] setLB:^{
-        
     
-       //code
-    }];
-    
-    //IAP支付 - 回调
-    [[DHSDK share] setCOB:^(DHZC zc) {
+     //IAP支付 - 回调
+    [[DHSDK share] setPayCallBack:^(DHPayType payType) {
+       
         
         //code
     }];
+    
     
     //支付页面关闭 - 回调
-    [[DHSDK share] setFuckVCB:^{
-        
+    [[DHSDK share] setPayColseBack:^{
+       
         //code
-    }];
-    
-    //登陆成功回调 ，获取个人信息进行相应处理
-    [[DHSDK share] setLSB:^(DHUser *user, DHLSS lss) {
-        NSString *userId    = user.userId;
-        NSString *userName  = user.username;
-        NSString *accessToken = user.accessToken;
-        NSLog(@"userId      -- %@", userId);
-        NSLog(@"userName    -- %@", userName);
-        NSLog(@"accessToken -- %@", accessToken);
-        
-    //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
-        
-        
-        
-        if (lss == DHLSBL) {
-            NSLog(@"登陆");
-        }
-        
-        else if (lss == DHLSBR){
-            NSLog(@"注册——》 登陆");
-        }
-
-        
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-        NSString *dateTime = [formatter stringFromDate:date];
-        
-        
-        DHRole *role = [DHRole new];
-        [role setServerId:@"serverId1"];
-        [role setServerName:@"紫级墨瞳"];
-        [role setRoleId:@"9527"];
-        [role setRoleName:@"唐三"];
-        [role setRoleLevel:1];
-        [role setLoginTime:dateTime];
-        [[DHSDK share] rl:role];
         
     }];
+ 
     
 }
 
@@ -146,9 +105,51 @@
             
         }
             break;
-        //登陆
+    
         case 1:{
-            [[DHSDK share] l];
+     
+            //登陆成功 回调
+            [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
+
+                NSString *userId    = user.userId;
+                NSString *userName  = user.username;
+                NSString *accessToken = user.accessToken;
+                NSLog(@"userId      -- %@", userId);
+                NSLog(@"userName    -- %@", userName);
+                NSLog(@"accessToken -- %@", accessToken);
+                
+                //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
+                
+                
+                if (lSS == DHLSBL) {
+                    NSLog(@"登陆");
+                }
+                
+                else if (lSS == DHLSBR){
+                    NSLog(@"注册——》 登陆");
+                }
+                
+                
+                //在相应的位置-自行调用上传角色信息
+                NSDate *date = [NSDate date];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateStyle:NSDateFormatterMediumStyle];
+                [formatter setTimeStyle:NSDateFormatterShortStyle];
+                [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+                NSString *dateTime = [formatter stringFromDate:date];
+                
+                
+                DHRole *role = [DHRole new];
+                [role setServerId:@"serverId1"];
+                [role setServerName:@"紫级墨瞳"];
+                [role setRoleId:@"9527"];
+                [role setRoleName:@"唐三"];
+                [role setRoleLevel:1];
+                [role setLoginTime:dateTime];
+                [[DHSDK share] reportRole:role];
+                
+                
+            }];
             
         }
             break;
@@ -168,19 +169,28 @@
             order.cpOrderId = orderId;
             order.productDescription = @"60个砖石";
             order.productId = @"com.dh.sdkdemo.6";
-            [[DHSDK share] z:order];
+            [[DHSDK share] createOrder:order];
             
         }
             break;
         //用户中心
         case 3:{
-            [[DHSDK share] C];
+            [[DHSDK share] userCenter];
            
         }
             break;
-        //注销
+       
         case 4:{
-            [[DHSDK share] lo];
+            //注销登出 -回调
+            [[DHSDK share] logout:^{
+                
+   
+//                //登陆
+//                [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
+//
+//                }];
+                
+            }];
             
         }
             break;
