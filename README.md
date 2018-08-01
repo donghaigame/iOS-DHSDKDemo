@@ -76,60 +76,66 @@ import <SDKDemo/SDKDemo.h>
   [[DHSDK share] v];
 ```
 
-#### 登陆方法
+
+#### 登陆 回调
 
 ```objective-c
-- (void)loginButtonClick
-{
-   [[DHSDK share] l];
-}
+
+ [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
+
+        NSString *userId    = user.userId;
+        NSString *userName  = user.username;
+        NSString *accessToken = user.accessToken;
+        NSLog(@"userId      -- %@", userId);
+        NSLog(@"userName    -- %@", userName);
+        NSLog(@"accessToken -- %@", accessToken);
+
+        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
+
+
+        if (lSS == DHLSBL) {
+            NSLog(@"登陆");
+        }
+
+        else if (lSS == DHLSBR){
+            NSLog(@"注册——》 登陆");
+        }
+
+
+        //在相应的位置-自行调用上传角色信息
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+        NSString *dateTime = [formatter stringFromDate:date];
+
+
+        DHRole *role = [DHRole new];
+        [role setServerId:@"serverId1"];
+        [role setServerName:@"紫级墨瞳"];
+        [role setRoleId:@"9527"];
+        [role setRoleName:@"唐三"];
+        [role setRoleLevel:1];
+        [role setLoginTime:dateTime];
+        [[DHSDK share] reportRole:role];
+
+  }];
+
 ```
 
-#### 登陆成功 - 回调方法
+#### 用户注销并回调
 
 ```objective-c
 
-[[DHSDK share] setLSB:^(DHUser *user, DHLSS lss) {
-    NSString *userId    = user.userId;
-    NSString *userName  = user.username;
-    NSString *accessToken = user.accessToken;
-    if (lss == DHLSBL) {
-    NSLog(@"登陆回调");
-    }
-    else if (lss == DHLSBR){
-    NSLog(@"注册-》登陆回调");
-    }
-
-    //获取当前登录时间。
-    NSDate *date = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-    NSString *dateTime = [formatter stringFromDate:date];
-
-
-    //上报角色
-    DHRole *role = [DHRole new];
-    [role setServerId:@"serverId1"];
-    [role setServerName:@"东海国际"];
-    [role setRoleId:@"89757"];
-    [role setRoleName:@"东海龙王"];
-    [role setRoleLevel:1];
-    [role setLoginTime:dateTime];
-    [[DHSDK share] rl:role];
-
-}];
-
-```
-
-#### 用户注销 - 回调方法
-
-```objective-c
-[[DHSDK share] setLB:^{
-
-  //code
-}];
+  [[DHSDK share] logout:^{
+                
+//      //自需 登陆
+//      [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
+//
+//       }];
+                
+    }];
 ```
 
 #### 支付方法 
@@ -139,35 +145,39 @@ import <SDKDemo/SDKDemo.h>
 {
   //totalFee 与 prdouctId = 金额与id 要一一对应，否则苹果支付会无法支付成功
     DHOrder *order = [DHOrder new];
-    order.serverId =@"app_101";
-    order.totalFee = 600;//(单位：分)
-    order.roleId = @"500000";
-    order.roleName =@"luzj";
-    order.productName =@"60钻石";
+    order.serverId =@"205";
+    order.totalFee = 600;
+    order.roleId = @"1000001325020563";
+    order.roleName =@"费思远";
+    order.productName =@"60元宝";
     CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
     NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
     order.customInfo = orderId;
     order.cpOrderId = orderId;
-    order.productDescription = @"60个钻石";
-    order.productId = @"com.dhajdh.6";
-    [[DHSDK share] z:order];
+    order.productDescription = @"60个砖石";
+    order.productId = @"com.dh.sdkdemo.6";
+    [[DHSDK share] createOrder:order];
 }
 ```
 
 ####  关闭支付页面 - 回调方法
 
 ```objective-c
-[[DHSDK share] setFuckVCB:^{
-
-  //code
-}];
+[[DHSDK share] setPayColseBack:^{
+       
+        //code
+        
+   }];
+ 
 ```
 
 #### IAP支付 - 回调方法
 ```objective-c
-[[DHSDK share] setCOB:^(DHZC zc) {
 
-    //code
+
+  [[DHSDK share] setPayCallBack:^(DHPayType payType) {
+       
+           //code
     /*
     zc 枚举 对应回调相应事件
     DHZCreateOrderFail      = 1,    //创建订单失败
@@ -177,8 +187,8 @@ import <SDKDemo/SDKDemo.h>
     DHZVerifyReceiptFail    = 5,    //支付验证失败
     DHZURLFail              = 6     //未能连接苹果商店 
     */
+    }];
 
-}];
 ```
 
 注意
