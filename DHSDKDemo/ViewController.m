@@ -66,7 +66,7 @@
     
     
      //IAP支付 - 回调
-    [[DHSDK share] setPayCallBack:^(DHPayType payType) {
+    [[DHSDK share] setPayInfoCallBack:^(DHPayInfoType payType) {
        
         
         //code
@@ -182,14 +182,9 @@
        
         case 4:{
             //注销登出 -回调
-            [[DHSDK share] logout:^{
+            [[DHSDK share] logoutAccountCallBack:^{
                 
    
-//                //登陆
-//                [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
-//
-//                }];
-                
             }];
             
         }

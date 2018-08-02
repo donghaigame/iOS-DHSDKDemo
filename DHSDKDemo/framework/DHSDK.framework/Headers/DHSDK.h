@@ -18,7 +18,7 @@ FOUNDATION_EXPORT const unsigned char MKSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MKSDK/PublicHeader.h>
 
-typedef NS_ENUM(NSInteger, DHPayType) {
+typedef NS_ENUM(NSInteger, DHPayInfoType) {
     DHZCreateOrderFail      = 1,    //创建订单失败
     DHZDoesNotExistProduct  = 2,    //商品信息不存在
     DHZUnknowFail           = 3,    //未知错误
@@ -33,12 +33,10 @@ typedef NS_ENUM(NSInteger, DHLSS) {
 };
 
 
-
-
 typedef void (^LoginSuccessBack)(DHUser *user, DHLSS lSS);
 typedef void (^LogoutCallBack)(void);
 typedef void (^PayColseBack)(void);
-typedef void (^PayCallBack)(DHPayType payType);
+typedef void (^PayInfoCallBack)(DHPayInfoType payType);
 
 
 @interface DHSDK : NSObject
@@ -68,7 +66,7 @@ typedef void (^PayCallBack)(DHPayType payType);
 @property (nonatomic, copy) LoginSuccessBack loginCallBack;
 @property (nonatomic, copy) LogoutCallBack logoutCallBack;
 @property (nonatomic, copy) PayColseBack payColseBack;
-@property (nonatomic, copy) PayCallBack payCallBack;
+@property (nonatomic, copy) PayInfoCallBack payInfoCallBack;
 
 /**
  *  获取DHSDK单例
@@ -98,25 +96,39 @@ typedef void (^PayCallBack)(DHPayType payType);
 
 
 /**
- *   用户回调
- *
+ *  用户登录
+ *  提示:可在需要的地方设置回调处理 setLoginCallBack
  */
-- (void)loginSucessCallBack:(LoginSuccessBack )callBack;
+
+- (void)login;
 
 
 /**
+ *   用户登录成功 并回调
+ */
+- (void)loginSucessCallBack:(LoginSuccessBack )callBack;
+
+/**
+ *  注销/登出
+ *  提示:可在需要的地方设置回调处理 setLogoutCallBack
  *
- *
+ */
+- (void)logoutAccount;
+
+
+/**
+ *  注销/登出 并回调
+ */
+
+- (void)logoutAccountCallBack:(LogoutCallBack )callBack;
+
+
+/**
+ *  创建订单
  *  @param order    订单信息
  */
 - (void)createOrder:(DHOrder *)order;
 
-
-/**
- *  注销用户登陆接口
- */
-
-- (void)logout:(LogoutCallBack )callBack;
 
 /**
  *  用户中心
