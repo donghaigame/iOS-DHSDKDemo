@@ -45,7 +45,7 @@ return UIInterfaceOrientationMaskLandscape ;
 ```
 import <SDKDemo/SDKDemo.h>
 ``` 
-### 注：这些参数届时商务会与你们对接提供，予以替换
+### 注：这些参数届时商务会与你们对接时提供，予以替换
 
 ```
  *  @param Id        游戏编号
@@ -130,12 +130,10 @@ import <SDKDemo/SDKDemo.h>
 
   [[DHSDK share] logout:^{
                 
-//      //自需 登陆
-//      [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
-//
-//       }];
+    
+    //code
                 
-    }];
+  }];
 ```
 
 #### 支付方法 
@@ -175,7 +173,7 @@ import <SDKDemo/SDKDemo.h>
 ```objective-c
 
 
-  [[DHSDK share] setPayCallBack:^(DHPayType payType) {
+  [[DHSDK share] setPayInfoCallBack:^(DHPayInfoType payType) {
        
            //code
     /*
