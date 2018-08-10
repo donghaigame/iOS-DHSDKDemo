@@ -16,8 +16,8 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-//如果只支持横屏的游戏，以免SDK显示界面异常，请使用
-return UIInterfaceOrientationMaskLandscape ;
+    //如果只支持横屏的游戏，以免SDK显示界面异常，请使用
+    return UIInterfaceOrientationMaskLandscape ;
 
 }
 ```
@@ -89,7 +89,8 @@ import <SDKDemo/SDKDemo.h>
         NSLog(@"userName    -- %@", userName);
         NSLog(@"accessToken -- %@", accessToken);
 
-        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
+        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 
+        // -> 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
 
 
         if (lSS == DHLSBL) {
@@ -101,26 +102,35 @@ import <SDKDemo/SDKDemo.h>
         }
 
 
-        //在相应的位置-自行调用上传角色信息
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-        NSString *dateTime = [formatter stringFromDate:date];
-
-
-        DHRole *role = [DHRole new];
-        [role setServerId:@"serverId1"];
-        [role setServerName:@"紫级墨瞳"];
-        [role setRoleId:@"9527"];
-        [role setRoleName:@"唐三"];
-        [role setRoleLevel:1];
-        [role setLoginTime:dateTime];
-        [[DHSDK share] reportRole:role];
-
   }];
+  
+  
+  ```
 
+#### 上传角色信息
+
+```objective-c
+
+- (void)reportRole
+{
+     NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:date];
+    
+    DHRole *role = [DHRole new];
+    [role setServerId:@"serverId1"];
+    [role setServerName:@"紫级墨瞳"];
+    [role setRoleId:@"9527"];
+    [role setRoleName:@"唐三"];
+    [role setRoleLevel:1];
+    [role setLoginTime:dateTime];
+    [[DHSDK share] reportRole:role];
+    
+}
+        
 ```
 
 #### 用户注销并回调
@@ -140,19 +150,20 @@ import <SDKDemo/SDKDemo.h>
 ```objective-c
 - (void)payButtonClick
 {
-  //totalFee 与 prdouctId = 金额与id 要一一对应，否则苹果支付会无法支付成功
-    DHOrder *order = [DHOrder new];
-    order.serverId =@"205";
-    order.totalFee = 600;
-    order.roleId = @"1000001325020563";
-    order.roleName =@"费思远";
-    order.productName =@"60元宝";
-    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-    NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
-    order.customInfo = orderId;
-    order.cpOrderId = orderId;
-    order.productDescription = @"60个砖石";
+ 
+    DHOrder *order    = [DHOrder new];
+    order.serverId    = @"205"
+    order.roleId      = @"1000001325020563";
+    order.roleName    = @"费思远";
+    order.productName = @"60元宝";
+    order.customInfo  = @"自定义文字传输";
+    order.cpOrderId   = @"order12938283492830"; (CP方订单)
+    
+    //totalFee && prdouctId 
+    //金额与id 要一一对应，否则苹果支付会无法支付成功
+    order.totalFee = 600;(分制)
     order.productId = @"com.dh.sdkdemo.6";
+    order.productDescription = @"元宝可用于购买商城用品";
     [[DHSDK share] createOrder:order];
 }
 ```
