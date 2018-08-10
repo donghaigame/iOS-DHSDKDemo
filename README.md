@@ -68,7 +68,7 @@ import <SDKDemo/SDKDemo.h>
 }
 ```
 
-5. SDK基本使用方法示例：
+### SDK基本使用方法示例：
 
 #### 获取SDK版本号
 
