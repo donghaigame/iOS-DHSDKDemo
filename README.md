@@ -11,7 +11,7 @@
 
 
 2. 项目Targets下找到General。
-TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支持横竖屏 根据自需）例如在AppDelegate.m, 也可在plist种设置。
+TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支持横竖屏 根据自需）例如在AppDelegate.m, 也可在plist种设置。勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
 
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
@@ -25,14 +25,13 @@ return UIInterfaceOrientationMaskLandscape ;
 <div align=center><img width="300" height="200" src="https://github.com/donghaigame/iOS-DHSDKDemo/raw/master/Snapshots/FrameworkSeleted.png"/></div>
 
 
-3. 勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
-并且在Embedded Binaries和Linked Frameworks and Libraries链接 frameworks:
+3.(必须添加)在TARGETS下的 Embedded Binaries 处 点击 + 号 点选链接 DHSDK frameworks: 如图
 
 
 <div align=center><img width="250" height="200" src="https://github.com/donghaigame/iOS-DHSDKDemo/raw/master/Snapshots/FrameworkAddSouse.png"/></div>
 
 
-4. 其中必要pilst 属性 如下：
+4. 其中必要pilst 属性 （否则在用户注册并登陆保存信息的情况下会崩溃） 添加如下：
 
     NSPhotoLibraryUsageDescription -key</br>
     需要获取您的相册权限用以保存账号密码 -string</br>
