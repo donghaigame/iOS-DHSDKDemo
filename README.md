@@ -35,7 +35,7 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 
 
 
-5.因为SDK支持横竖屏，如果只是横屏的游戏请选择 type = UIInterfaceOrientationMaskLandscape。 避免SDK显示异常 建议不要同事支持横竖屏 
+5.因为SDK支持横竖屏（根据自需），避免SDK显示异常 建议不要同时支持横竖屏 
 
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
