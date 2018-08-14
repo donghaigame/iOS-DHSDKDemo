@@ -42,10 +42,11 @@
 }
 
 
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-{
-    return UIInterfaceOrientationMaskAll;
-    //    return  UIInterfaceOrientationMaskPortrait;
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+
+    
+    return UIInterfaceOrientationMaskLandscape;
+    
 }
 
    
