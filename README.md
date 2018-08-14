@@ -24,10 +24,12 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 
 4. 其中必要pilst 属性 （否则在用户注册并登陆保存信息的情况下会崩溃） 添加如下：
 
-    NSPhotoLibraryUsageDescription -key</br>
+ ```
+     NSPhotoLibraryUsageDescription -key</br>
     需要获取您的相册权限用以保存账号密码 -string</br>
     NSPhotoLibraryAddUsageDescription - key</br>
     需要获取您的相册权限用以保存账号密码 - string</br>
+```
 
 
 
