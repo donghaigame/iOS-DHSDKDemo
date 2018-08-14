@@ -11,16 +11,7 @@
 
 
 2. 项目Targets下找到General。
-TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支持横竖屏 根据自需）例如在AppDelegate.m, 也可在plist种设置。勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
-
-```
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-{
-    //如果只支持横屏的游戏，以免SDK显示界面异常，请使用
-    return UIInterfaceOrientationMaskLandscape ;
-
-}
-```
+TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据自需, 也可在plist种设置。勾选 Hide status bar 和requires full screen，并且在info.plist下加View controller-based status bar appearance 设置为NO
 
 <div align=center><img width="300" height="200" src="https://github.com/donghaigame/iOS-DHSDKDemo/raw/master/Snapshots/FrameworkSeleted.png"/></div>
 
@@ -39,7 +30,19 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （SDK支
     需要获取您的相册权限用以保存账号密码 - string</br>
 
 
-5. 导入 `<DHSDK/DHSDK.h>`</br>
+
+5.因为SDK支持横竖屏，如果只是横屏的游戏请选择 type = UIInterfaceOrientationMaskLandscape。 避免SDK显示异常 建议不要同事支持横竖屏 
+
+```
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    //如果只支持横屏的游戏，以免SDK显示界面异常，请使用
+    return UIInterfaceOrientationMaskLandscape ; 
+
+}
+```
+
+6. 导入 `<DHSDK/DHSDK.h>`</br>
 
 ```
 import <SDKDemo/SDKDemo.h>
