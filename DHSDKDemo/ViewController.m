@@ -54,15 +54,15 @@
     }];
     
     
-    [self payMethCallBack];
-
+    [self methForCallBack];
+    
 
 }
 
 #pragma mark - 相关回调事件
 
 
-- (void)payMethCallBack{
+- (void)methForCallBack{
     
     
      //IAP支付 - 回调
@@ -79,7 +79,15 @@
         //code
         
     }];
- 
+    
+    
+    //切换账号/注销/登出回到
+    [[DHSDK share] setLogoutCallBack:^{
+       
+        //code 如:重启游戏，注销用户信息
+
+        
+    }];
     
 }
 
@@ -130,7 +138,9 @@
                 }
                 
                 
-                //在相应的位置-自行调用上传角色信息
+                /*
+                 * 在相应的位置-自行调用上传角色信息
+                 **/
                 NSDate *date = [NSDate date];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -159,7 +169,6 @@
             
             DHOrder *order = [DHOrder new];
             order.serverId =@"205";
-            order.totalFee = 600;
             order.roleId = @"1000001325020563";
             order.roleName =@"费思远";
             order.productName =@"60元宝";
@@ -169,6 +178,7 @@
             order.cpOrderId = orderId;
             order.productDescription = @"60个砖石";
             order.productId = @"com.dh.sdkdemo.6";
+            order.totalFee = 600; //分制
             [[DHSDK share] createOrder:order];
             
         }
@@ -181,11 +191,9 @@
             break;
        
         case 4:{
-            //注销登出 -回调
-            [[DHSDK share] logoutAccountCallBack:^{
-                
-   
-            }];
+            //注销登出/切换账号
+          
+            [[DHSDK share] logoutAccount];
             
         }
             break;
