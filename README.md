@@ -69,14 +69,15 @@ import <SDKDemo/SDKDemo.h>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
       [self.window makeKeyAndVisible];
-      [[DHSDK share] it:1
-                  subId:1
-                 apiKey:@"ba472a72208cb671639d94a54cbb017d"
-                success:^{
-                    (@"初始化成功");
-                } failure:^(int errcode, NSString *errorMessage) {
-                    (@"初始化失败");
-                }];
+      [SDHSDK initWithGameId:1
+                 subGameId:1
+                    apiKey:@"ba472a72208cb671639d94a54cbb017d"
+                   success:^{
+                       NSLog(@"初始化成功");
+                   }
+                   failure:^(int errcode, NSString *errorMessage) {
+                       NSLog(@"初始化失败");
+                   }];
 }
 ```
 
@@ -93,29 +94,52 @@ import <SDKDemo/SDKDemo.h>
 
 ```objective-c
 
- [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
+  //登陆
+  [SDHSDK login];
 
-        NSString *userId    = user.userId;
-        NSString *userName  = user.username;
-        NSString *accessToken = user.accessToken;
-        NSLog(@"userId      -- %@", userId);
-        NSLog(@"userName    -- %@", userName);
-        NSLog(@"accessToken -- %@", accessToken);
+  //登陆成功回到
+  [SDHSDK setLoginCallBack:^(DHUser *user, DHLSS lSS) {
 
-        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 
-        // -> 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
+      NSString *userId    = user.userId;
+      NSString *userName  = user.username;
+      NSString *accessToken = user.accessToken;
+      NSLog(@"userId      -- %@", userId);
+      NSLog(@"userName    -- %@", userName);
+      NSLog(@"accessToken -- %@", accessToken);
+
+      //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
 
 
-        if (lSS == DHLSBL) {
-            NSLog(@"登陆");
-        }
+      if (lSS == DHLSBL) {
+          NSLog(@"登陆");
+      }
 
-        else if (lSS == DHLSBR){
-            NSLog(@"注册——》 登陆");
-        }
+      else if (lSS == DHLSBR){
+          NSLog(@"注册——》 登陆");
+      }
+
+
+      //在相应的位置-自行调用上传角色信息
+      NSDate *date = [NSDate date];
+      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+      [formatter setDateStyle:NSDateFormatterMediumStyle];
+      [formatter setTimeStyle:NSDateFormatterShortStyle];
+      [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+      NSString *dateTime = [formatter stringFromDate:date];
+
+
+      DHRole *role = [DHRole new];
+      [role setServerId:@"serverId1"];
+      [role setServerName:@"紫级墨瞳"];
+      [role setRoleId:@"9527"];
+      [role setRoleName:@"唐三"];
+      [role setRoleLevel:1];
+      [role setLoginTime:dateTime];
+      [SDHSDK reportRole:role];
 
 
   }];
+            
   
   
   ```
@@ -140,7 +164,7 @@ import <SDKDemo/SDKDemo.h>
     [role setRoleName:@"唐三"];
     [role setRoleLevel:1];
     [role setLoginTime:dateTime];
-    [[DHSDK share] reportRole:role];
+    [SDHSDK reportRole:role];
     
 }
         
@@ -150,12 +174,16 @@ import <SDKDemo/SDKDemo.h>
 
 ```objective-c
 
-  [[DHSDK share] logout:^{
-                
-    
-    //code
-                
-  }];
+   //注销登出 -回调
+   [SDHSDK logoutAccount];
+   //通过这个切换/登出回调
+   [SDHSDK setLogoutCallBack:^{
+   
+       //浮动按钮中有个 切换账号，
+       //通过这个方法 初始化游戏等操作
+
+
+   }];
 ```
 
 #### 支付方法 
@@ -177,14 +205,15 @@ import <SDKDemo/SDKDemo.h>
     order.totalFee = 600;(分制)
     order.productId = @"com.dh.sdkdemo.6";
     order.productDescription = @"元宝可用于购买商城用品";
-    [[DHSDK share] createOrder:order];
+    [SDHSDK createOrder:order];
 }
 ```
 
 ####  关闭支付页面 - 回调方法
 
 ```objective-c
-[[DHSDK share] setPayColseBack:^{
+
+ [SDHSDK setPayColseBack:^{
        
         //code
         
@@ -195,8 +224,7 @@ import <SDKDemo/SDKDemo.h>
 #### IAP支付 - 回调方法
 ```objective-c
 
-
-  [[DHSDK share] setPayInfoCallBack:^(DHPayInfoType payType) {
+  [SDHSDK setPayInfoCallBack:^(DHPayInfoType payType) {
        
            //code
     /*
