@@ -40,8 +40,14 @@ TARGETS -> General -> Deployment Info 将  Device Orientation下勾选 （根据
 ```
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    //如果只支持横屏的游戏，以免SDK显示界面异常，请使用
+
+    //避免SDK显示异常 建议不要同时支持横竖屏 !!！
+    
+    //如果是横屏的游戏，请使用
     return UIInterfaceOrientationMaskLandscape ; 
+  
+   //如果是竖屏游戏，请使用
+    return UIInterfaceOrientationMaskPortrait;
 
 }
 ```
