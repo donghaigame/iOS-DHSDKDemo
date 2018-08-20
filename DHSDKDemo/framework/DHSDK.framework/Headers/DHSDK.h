@@ -10,6 +10,9 @@
 #import "DHUser.h"
 #import "DHRole.h"
 
+
+#define SDHSDK  [DHSDK share]
+
 //! Project version number for SDK.
 FOUNDATION_EXPORT double MKSDKVersionNumber;
 
@@ -84,44 +87,19 @@ typedef void (^PayInfoCallBack)(DHPayInfoType payType);
 /**
  *  初始化SDK
  *
- *  @param Id    游戏编号
- *  @param subId     游戏子包
- *  @param apiKey    游戏密钥
+ *  @param gameId        游戏编号
+ *  @param subGameId     游戏子包
+ *  @param apiKey        游戏密钥
  */
-- (void)it:(int)Id
-     subId:(int)subId
-    apiKey:(NSString *)apiKey
-   success:(void (^)(void))successBlock
-   failure:(void (^)(int errcode, NSString *errorMessage))errorBlock;
+- (void)initWithGameId:(int)gameId
+             subGameId:(int)subGameId
+                apiKey:(NSString *)apiKey
+               success:(void (^)(void))successBlock
+               failure:(void (^)(int errcode, NSString *errorMessage))errorBlock;
 
 
-/**
- *  用户登录
- *  提示:可在需要的地方设置回调处理 setLoginCallBack
- */
 
-- (void)login;
-
-
-/**
- *   用户登录成功 并回调
- */
-- (void)loginSucessCallBack:(LoginSuccessBack )callBack;
-
-/**
- *  注销/登出
- *  提示:可在需要的地方设置回调处理 setLogoutCallBack
- *
- */
-- (void)logoutAccount;
-
-
-/**
- *  注销/登出 并回调
- */
-
-- (void)logoutAccountCallBack:(LogoutCallBack )callBack;
-
+#pragma mark - 创建订单
 
 /**
  *  创建订单
@@ -130,10 +108,15 @@ typedef void (^PayInfoCallBack)(DHPayInfoType payType);
 - (void)createOrder:(DHOrder *)order;
 
 
+#pragma mark - 用户中心
+
 /**
  *  用户中心
  */
 - (void)userCenter;
+
+
+#pragma mark - 上报角色
 
 /**
  *  上报角色
@@ -142,6 +125,8 @@ typedef void (^PayInfoCallBack)(DHPayInfoType payType);
  */
 - (void)reportRole:(DHRole *)role;
 
+
+#pragma mark - 显示/隐藏 浮动按钮
 
 /**
  *  展示浮动按钮
@@ -152,6 +137,49 @@ typedef void (^PayInfoCallBack)(DHPayInfoType payType);
  *  隐藏浮动按钮
  */
 - (void)disFloatBtn;
+
+
+#pragma mark - 登录 回调
+
+/**
+ *  用户登录
+ */
+
+- (void)login;
+
+/**
+ *  登陆成功回调
+ *  @param loginCallBack loginCallBack description
+ */
+- (void)setLoginCallBack:(LoginSuccessBack)loginCallBack;
+
+
+//#pragma mark - 登录带回调的，考虑到 用户第一次 注册账号并登陆操作，
+//               还是需要手动注册一次登陆成功回调，所以此处注释掉。
+//               如果想用可以自行打开。自选/预留
+//- (void)loginSucessCallBack:(LoginSuccessBack )callBack;
+
+
+#pragma mark - 登出/切换账号 回调
+
+/**
+ *  注销/登出/切换账号
+ */
+- (void)logoutAccount;
+
+
+/**
+ * 登出/注销账号回调
+ * @param logoutCallBack logoutCallBack description
+ */
+- (void)setLogoutCallBack:(LogoutCallBack)logoutCallBack;
+
+
+//#pragma mark - 登出切换账号，考虑到触发方法都在SDK
+//               所以带回调方法不适用。预留/备用
+//- (void)logoutAccountCallBack:(LogoutCallBack )callBack;
+
+
 
 
 @end

@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     
-    NSLog(@"SDK版本%@", [[DHSDK share] v]);
+    NSLog(@"SDK版本%@", [SDHSDK v]);
     
     [super viewDidLoad];
 
@@ -30,7 +30,6 @@
     
     _btnTitles = @[@"初始化",@"登 陆",@"支 付",@"用户中心",@"注 销"];
     
-    //家就是的看见爱上的
     CGFloat topMar = 40;
     CGFloat lefMar = 40;
     CGFloat itemMar = 18;
@@ -80,15 +79,6 @@
         
     }];
     
-    
-    //切换账号/注销/登出回到
-    [[DHSDK share] setLogoutCallBack:^{
-       
-        //code 如:重启游戏，注销用户信息
-
-        
-    }];
-    
 }
 
 #pragma mark - 按钮点击事件
@@ -100,14 +90,16 @@
         
         //初始化
         case 0:{
-            [[DHSDK share] it:1
-                        subId:1
-                       apiKey:@"ba472a72208cb671639d94a54cbb017d"
-                      success:^{
-                          NSLog(@"初始化成功");
-                      } failure:^(int errcode, NSString *errorMessage) {
-                          NSLog(@"初始化失败");
-                      }];
+            
+            [SDHSDK initWithGameId:1
+                         subGameId:1
+                            apiKey:@"ba472a72208cb671639d94a54cbb017d"
+                           success:^{
+                               NSLog(@"初始化成功");
+                           }
+                           failure:^(int errcode, NSString *errorMessage) {
+                               NSLog(@"初始化失败");
+                           }];
             
             
             
@@ -116,9 +108,12 @@
     
         case 1:{
      
-            //登陆成功 回调
-            [[DHSDK share] loginSucessCallBack:^(DHUser *user, DHLSS lSS) {
-
+            //登陆
+            [SDHSDK login];
+            
+            //登陆成功回到
+            [SDHSDK setLoginCallBack:^(DHUser *user, DHLSS lSS) {
+                
                 NSString *userId    = user.userId;
                 NSString *userName  = user.username;
                 NSString *accessToken = user.accessToken;
@@ -126,7 +121,7 @@
                 NSLog(@"userName    -- %@", userName);
                 NSLog(@"accessToken -- %@", accessToken);
                 
-                //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 -> 有用户信息即可登陆游戏界面（大致流程）
+                //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
                 
                 
                 if (lSS == DHLSBL) {
@@ -138,9 +133,7 @@
                 }
                 
                 
-                /*
-                 * 在相应的位置-自行调用上传角色信息
-                 **/
+                //在相应的位置-自行调用上传角色信息
                 NSDate *date = [NSDate date];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -156,16 +149,16 @@
                 [role setRoleName:@"唐三"];
                 [role setRoleLevel:1];
                 [role setLoginTime:dateTime];
-                [[DHSDK share] reportRole:role];
+                [SDHSDK reportRole:role];
                 
                 
             }];
+            
             
         }
             break;
         //支付
         case 2:{
-            
             
             DHOrder *order = [DHOrder new];
             order.serverId =@"205";
@@ -179,21 +172,27 @@
             order.productDescription = @"60个砖石";
             order.productId = @"com.dh.sdkdemo.6";
             order.totalFee = 600; //分制
-            [[DHSDK share] createOrder:order];
+            [SDHSDK createOrder:order];
             
         }
             break;
         //用户中心
         case 3:{
-            [[DHSDK share] userCenter];
+           [SDHSDK userCenter];
            
         }
             break;
        
         case 4:{
-            //注销登出/切换账号
-          
-            [[DHSDK share] logoutAccount];
+            //注销登出
+            [SDHSDK logoutAccount];
+            //通过这个切换/登出回调
+            [SDHSDK setLogoutCallBack:^{
+                //浮动按钮中有个 切换账号，
+                //通过这个方法 初始化游戏等操作
+                
+                
+            }];
             
         }
             break;

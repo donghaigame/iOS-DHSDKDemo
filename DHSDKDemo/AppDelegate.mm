@@ -28,14 +28,15 @@
     [self.window setBackgroundColor:[UIColor whiteColor]];
     
     //初始化SDK - 东海测试
-    [[DHSDK share] it:1
-                subId:1
-               apiKey:@"ba472a72208cb671639d94a54cbb017d"
-              success:^{
-                  NSLog(@"初始化成功");
-              } failure:^(int errcode, NSString *errorMessage) {
-                  NSLog(@"初始化失败");
-              }];
+    [SDHSDK initWithGameId:1
+                 subGameId:1
+                    apiKey:@"ba472a72208cb671639d94a54cbb017d"
+                   success:^{
+                       NSLog(@"初始化成功");
+                   }
+                   failure:^(int errcode, NSString *errorMessage) {
+                       NSLog(@"初始化失败");
+                   }];
     
     
     return YES;
