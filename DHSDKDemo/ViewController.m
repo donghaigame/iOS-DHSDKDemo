@@ -9,12 +9,17 @@
 #import "ViewController.h"
 #import <DHSDK/DHSDK.h>
 
+/**
+ *  说明文档
+ *  https://github.com/donghaigame/iOS-DHSDKDemo   客户端
+ *  https://github.com/donghaigame/DHSDKServerDemo 服务端
+ */
+
 @interface ViewController ()
 {
     NSArray *_btnTitles;
     
 }
-
 
 @end
 
@@ -52,10 +57,8 @@
         
     }];
     
-    
     [self methForCallBack];
     
-
 }
 
 #pragma mark - 相关回调事件
@@ -65,17 +68,15 @@
     
     
      //IAP支付 - 回调
-    [[DHSDK share] setPayInfoCallBack:^(DHPayInfoType payType) {
-       
+    [SDHSDK setInfoCallBack:^(DHPInfoType pType) {
         
-        //code
+        
     }];
     
-    
     //支付页面关闭 - 回调
-    [[DHSDK share] setPayColseBack:^{
+    [SDHSDK setColseBack:^{
        
-        //code
+        
         
     }];
     
@@ -189,7 +190,7 @@
             //通过这个切换/登出回调
             [SDHSDK setLogoutCallBack:^{
                 //浮动按钮中有个 切换账号，
-                //通过这个方法 初始化游戏等操作
+                //通过这个方法 初始化游戏,切换到登陆界面等操作
                 
                 
             }];

@@ -27,6 +27,13 @@
     [self.window makeKeyAndVisible];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     
+    
+    /**
+     *  说明文档
+     *  https://github.com/donghaigame/iOS-DHSDKDemo   客户端
+     *  https://github.com/donghaigame/DHSDKServerDemo 服务端
+     */
+    
     //初始化SDK - 东海测试
     [SDHSDK initWithGameId:1
                  subGameId:1

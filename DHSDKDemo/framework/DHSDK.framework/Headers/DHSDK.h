@@ -21,12 +21,12 @@ FOUNDATION_EXPORT const unsigned char MKSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MKSDK/PublicHeader.h>
 
-typedef NS_ENUM(NSInteger, DHPayInfoType) {
+typedef NS_ENUM(NSInteger, DHPInfoType) {
     DHZCreateOrderFail      = 1,    //创建订单失败
     DHZDoesNotExistProduct  = 2,    //商品信息不存在
     DHZUnknowFail           = 3,    //未知错误
-    DHZVerifyReceiptSucceed = 4,    //支付验证成功
-    DHZVerifyReceiptFail    = 5,    //支付验证失败
+    DHZVerifyReceiptSucceed = 4,    //验证成功
+    DHZVerifyReceiptFail    = 5,    //验证失败
     DHZURLFail              = 6     //未能连接苹果商店
 };
 
@@ -38,8 +38,8 @@ typedef NS_ENUM(NSInteger, DHLSS) {
 
 typedef void (^LoginSuccessBack)(DHUser *user, DHLSS lSS);
 typedef void (^LogoutCallBack)(void);
-typedef void (^PayColseBack)(void);
-typedef void (^PayInfoCallBack)(DHPayInfoType payType);
+typedef void (^DHColseBack)(void);
+typedef void (^DHInfoCallBack)(DHPInfoType pType);
 
 
 @interface DHSDK : NSObject
@@ -68,8 +68,8 @@ typedef void (^PayInfoCallBack)(DHPayInfoType payType);
 @property (nonatomic, strong, readonly) DHUser *currUser;
 @property (nonatomic, copy) LoginSuccessBack loginCallBack;
 @property (nonatomic, copy) LogoutCallBack logoutCallBack;
-@property (nonatomic, copy) PayColseBack payColseBack;
-@property (nonatomic, copy) PayInfoCallBack payInfoCallBack;
+@property (nonatomic, copy) DHColseBack colseBack;
+@property (nonatomic, copy) DHInfoCallBack infoCallBack;
 
 /**
  *  获取DHSDK单例
