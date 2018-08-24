@@ -68,13 +68,13 @@
     
     
      //IAP支付 - 回调
-    [SDHSDK setInfoCallBack:^(DHPInfoType pType) {
+    [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
         
         
     }];
     
     //支付页面关闭 - 回调
-    [SDHSDK setColseBack:^{
+    [SDHSDK setDhColseBack:^{
        
         
         
@@ -166,12 +166,11 @@
             order.roleId = @"1000001325020563";
             order.roleName =@"费思远";
             order.productName =@"60元宝";
-            CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-            NSString *orderId = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuidRef));
-            order.customInfo = orderId;
-            order.cpOrderId = orderId;
+            order.customInfo = @"自定义内容";
+            //cp创建订单号
+            order.cpOrderId = @"12321423253";
             order.productDescription = @"60个砖石";
-            order.productId = @"com.dh.sdkdemo.6";
+            order.productId = @"com.dhsdk.demo.6";
             order.totalFee = 600; //分制
             [SDHSDK createOrder:order];
             

@@ -68,8 +68,8 @@ typedef void (^DHInfoCallBack)(DHPInfoType pType);
 @property (nonatomic, strong, readonly) DHUser *currUser;
 @property (nonatomic, copy) LoginSuccessBack loginCallBack;
 @property (nonatomic, copy) LogoutCallBack logoutCallBack;
-@property (nonatomic, copy) DHColseBack colseBack;
-@property (nonatomic, copy) DHInfoCallBack infoCallBack;
+@property (nonatomic, copy) DHColseBack dhColseBack; //支付关闭回调
+@property (nonatomic, copy) DHInfoCallBack dhInfoCallBack; //支付成功相关
 
 /**
  *  获取DHSDK单例
