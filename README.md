@@ -93,54 +93,8 @@ import <SDKDemo/SDKDemo.h>
 #### 登陆 回调
 
 ```objective-c
-
   //登陆
   [SDHSDK login];
-
-  //登陆成功回到
-  [SDHSDK setLoginCallBack:^(DHUser *user, DHLSS lSS) {
-
-      NSString *userId    = user.userId;
-      NSString *userName  = user.username;
-      NSString *accessToken = user.accessToken;
-      NSLog(@"userId      -- %@", userId);
-      NSLog(@"userName    -- %@", userName);
-      NSLog(@"accessToken -- %@", accessToken);
-
-      //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
-
-
-      if (lSS == DHLSBL) {
-          NSLog(@"登陆");
-      }
-
-      else if (lSS == DHLSBR){
-          NSLog(@"注册——》 登陆");
-      }
-
-
-      //在相应的位置-自行调用上传角色信息
-      NSDate *date = [NSDate date];
-      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-      [formatter setDateStyle:NSDateFormatterMediumStyle];
-      [formatter setTimeStyle:NSDateFormatterShortStyle];
-      [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-      NSString *dateTime = [formatter stringFromDate:date];
-
-
-      DHRole *role = [DHRole new];
-      [role setServerId:@"serverId1"];
-      [role setServerName:@"紫级墨瞳"];
-      [role setRoleId:@"9527"];
-      [role setRoleName:@"唐三"];
-      [role setRoleLevel:1];
-      [role setLoginTime:dateTime];
-      [SDHSDK reportRole:role];
-
-
-  }];
-            
-  
   
   ```
 
@@ -170,20 +124,13 @@ import <SDKDemo/SDKDemo.h>
         
 ```
 
-#### 用户注销并回调
+#### 用户注销
 
 ```objective-c
 
    //注销登出 -回调
    [SDHSDK logoutAccount];
-   //通过这个切换/登出回调
-   [SDHSDK setLogoutCallBack:^{
-   
-       //浮动按钮中有个 切换账号，
-       //通过这个方法 初始化游戏等操作
 
-
-   }];
 ```
 
 #### 支付方法 
@@ -209,22 +156,80 @@ import <SDKDemo/SDKDemo.h>
 }
 ```
 
-####  关闭支付页面 - 回调方法
+####  注册关键回到方法
 
 ```objective-c
 
-   [SDHSDK setDhColseBack:^{
 
-     //code
+- (void)registeredMethForCallBack{
 
-   }];
- 
-```
+ //登陆成功 -回调
+    [SDHSDK setLoginCallBack:^(DHUser *user, DHLSS lSS) {
+        
+        NSString *userId    = user.userId;
+        NSString *userName  = user.username;
+        NSString *accessToken = user.accessToken;
+        NSLog(@"userId      -- %@", userId);
+        NSLog(@"userName    -- %@", userName);
+        NSLog(@"accessToken -- %@", accessToken);
+        
+        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 
+                拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
+        
+        
+        if (lSS == DHLSBL) {
+            NSLog(@"登陆");
+        }
+        
+        else if (lSS == DHLSBR){
+            NSLog(@"注册——》 登陆");
+        }
+        
+        
+        //在相应的位置-自行调用上传角色信息
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+        NSString *dateTime = [formatter stringFromDate:date];
+        
+        
+        DHRole *role = [DHRole new];
+        [role setServerId:@"serverId1"];
+        [role setServerName:@"紫级墨瞳"];
+        [role setRoleId:@"9527"];
+        [role setRoleName:@"唐三"];
+        [role setRoleLevel:1];
+        [role setLoginTime:dateTime];
+        [SDHSDK reportRole:role];
+        
+        
+    }];
 
-#### IAP支付 - 回调方法
-```objective-c
+    //注销账号 - 回调
+    [SDHSDK setLogoutCallBack:^{
+        //浮动按钮中有个 切换账号，
+        //通过这个方法 初始化游戏,切换到登陆界面等操作
+        
+        
+    }];
+    
+    //IAP支付  - 回调
+    [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
+        
+        
+    }];
+    
+    //AP支付页面关闭 - 回调
+    [SDHSDK setDhColseBack:^{
+        
+    
+        
+    }];
 
- [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
+
+  [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
         
     DHZCreateOrderFail      = 1,    //创建订单失败
     DHZDoesNotExistProduct  = 2,    //商品信息不存在
@@ -233,9 +238,17 @@ import <SDKDemo/SDKDemo.h>
     DHZVerifyReceiptFail    = 5,    //验证失败
     DHZURLFail              = 6     //未能连接苹果商店
     
- }];
+  }];
 
+  
+  [SDHSDK setDhColseBack:^{
 
+     //code
+
+  }];
+ 
+
+}
 
 ```
 
