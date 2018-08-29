@@ -1,10 +1,10 @@
 
-#当年版本 V:1.0.25
+#当前版本 V:1.0.25
 =============
 
 ## 东海游戏iOS SDK客户端说明文档
 
-使用方法
+## 使用方法
 ==============
 
 1. 打开DHSDKDemo.xcodeproj  将 frameworks文件 内的DHSDK.framework和DHSDK.xcassets添加(拖放)到你的工程目录中。
