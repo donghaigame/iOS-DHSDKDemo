@@ -213,10 +213,10 @@ import <SDKDemo/SDKDemo.h>
 
 ```objective-c
 
- [SDHSDK setPayColseBack:^{
-       
-        //code
-        
+   [SDHSDK setDhColseBack:^{
+
+     //code
+
    }];
  
 ```
@@ -224,19 +224,18 @@ import <SDKDemo/SDKDemo.h>
 #### IAP支付 - 回调方法
 ```objective-c
 
-  [SDHSDK setPayInfoCallBack:^(DHPayInfoType payType) {
-       
-           //code
-    /*
-    zc 枚举 对应回调相应事件
+ [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
+        
     DHZCreateOrderFail      = 1,    //创建订单失败
     DHZDoesNotExistProduct  = 2,    //商品信息不存在
     DHZUnknowFail           = 3,    //未知错误
-    DHZVerifyReceiptSucceed = 4,    //支付验证成功
-    DHZVerifyReceiptFail    = 5,    //支付验证失败
-    DHZURLFail              = 6     //未能连接苹果商店 
-    */
-    }];
+    DHZVerifyReceiptSucceed = 4,    //验证成功
+    DHZVerifyReceiptFail    = 5,    //验证失败
+    DHZURLFail              = 6     //未能连接苹果商店
+    
+ }];
+
+
 
 ```
 
