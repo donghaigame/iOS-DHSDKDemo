@@ -1,6 +1,8 @@
-# 东海游戏iOS SDK客户端说明文档
-东海游戏iOS SDKDemo  https://github.com/donghaigame/iOS-DHSDKDemo.git
 
+#当年版本 V:1.0.25
+=============
+
+## 东海游戏iOS SDK客户端说明文档
 
 使用方法
 ==============
@@ -86,6 +88,7 @@ import <SDKDemo/SDKDemo.h>
 #### 获取SDK版本号
 
 ```objective-c
+
   [[DHSDK share] v];
 ```
 
