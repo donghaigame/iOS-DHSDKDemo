@@ -12,9 +12,10 @@
 		3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BB20F38E1E003B8B68 /* Main.storyboard */; };
 		3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */; };
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
-		3B4990D12111E65600533E52 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4990D02111E65600533E52 /* DHSDK.framework */; };
-		3B4990D32111E7E900533E52 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4990D02111E65600533E52 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B8EB83121017AF9005B926D /* DHSDK.xcassets */; };
+		3B2DBA622137805900162DF6 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; };
+		3B2DBA632137805900162DF6 /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2DBA612137805900162DF6 /* DHSDK.xcassets */; };
+		3B2DBA642137806300162DF6 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; };
+		3B2DBA652137806300162DF6 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B4990D32111E7E900533E52 /* DHSDK.framework in Embed Frameworks */,
+				3B2DBA652137806300162DF6 /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,8 +42,8 @@
 		3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B11D8C320F38E1F003B8B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B11D8C420F38E1F003B8B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3B4990D02111E65600533E52 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
-		3B8EB83121017AF9005B926D /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
+		3B2DBA602137805900162DF6 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
+		3B2DBA612137805900162DF6 /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4990D12111E65600533E52 /* DHSDK.framework in Frameworks */,
+				3B2DBA622137805900162DF6 /* DHSDK.framework in Frameworks */,
+				3B2DBA642137806300162DF6 /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +78,7 @@
 		3B11D8B420F38E1E003B8B68 /* DHSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3B11D8CB20F38E45003B8B68 /* framework */,
+				3B2DBA5F2137805900162DF6 /* DHSDK1.0.25 */,
 				3B11D8B520F38E1E003B8B68 /* AppDelegate.h */,
 				3B11D8B620F38E1E003B8B68 /* AppDelegate.mm */,
 				3B11D8B820F38E1E003B8B68 /* ViewController.h */,
@@ -89,13 +91,13 @@
 			path = DHSDKDemo;
 			sourceTree = "<group>";
 		};
-		3B11D8CB20F38E45003B8B68 /* framework */ = {
+		3B2DBA5F2137805900162DF6 /* DHSDK1.0.25 */ = {
 			isa = PBXGroup;
 			children = (
-				3B4990D02111E65600533E52 /* DHSDK.framework */,
-				3B8EB83121017AF9005B926D /* DHSDK.xcassets */,
+				3B2DBA602137805900162DF6 /* DHSDK.framework */,
+				3B2DBA612137805900162DF6 /* DHSDK.xcassets */,
 			);
-			path = framework;
+			path = DHSDK1.0.25;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +158,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2DBA632137805900162DF6 /* DHSDK.xcassets in Resources */,
 				3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */,
-				3B8EB83321017AF9005B926D /* DHSDK.xcassets in Resources */,
 				3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +318,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
+					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.25",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -344,6 +347,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
+					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.25",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
