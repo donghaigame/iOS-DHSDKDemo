@@ -175,10 +175,6 @@ import <SDKDemo/SDKDemo.h>
         NSLog(@"userName    -- %@", userName);
         NSLog(@"accessToken -- %@", accessToken);
         
-        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - > 
-                拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
-        
-        
         if (lSS == DHLSBL) {
             NSLog(@"登陆");
         }
