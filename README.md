@@ -93,7 +93,7 @@ import <SDKDemo/SDKDemo.h>
 ```
 
 
-#### 登陆 回调
+#### 登陆 
 
 ```objective-c
   //登陆
@@ -159,10 +159,9 @@ import <SDKDemo/SDKDemo.h>
 }
 ```
 
-####  注册关键回到方法
+####  注册相关回调方法
 
 ```objective-c
-
 
 - (void)registeredMethForCallBack{
 
@@ -189,25 +188,6 @@ import <SDKDemo/SDKDemo.h>
         }
         
         
-        //在相应的位置-自行调用上传角色信息
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-        NSString *dateTime = [formatter stringFromDate:date];
-        
-        
-        DHRole *role = [DHRole new];
-        [role setServerId:@"serverId1"];
-        [role setServerName:@"紫级墨瞳"];
-        [role setRoleId:@"9527"];
-        [role setRoleName:@"唐三"];
-        [role setRoleLevel:1];
-        [role setLoginTime:dateTime];
-        [SDHSDK reportRole:role];
-        
-        
     }];
 
     //注销账号 - 回调
@@ -218,19 +198,6 @@ import <SDKDemo/SDKDemo.h>
         
     }];
     
-    //IAP支付  - 回调
-    [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
-        
-        
-    }];
-    
-    //AP支付页面关闭 - 回调
-    [SDHSDK setDhColseBack:^{
-        
-    
-        
-    }];
-
 
   [SDHSDK setDhInfoCallBack:^(DHPInfoType pType) {
         
