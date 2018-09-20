@@ -12,9 +12,9 @@
 
 
 
-#define DHID      @"48"
-#define DHSubID   @"61"
-#define DHAPI_key @"a9a54fb8fe53b83b4352b1cbb0930ba8"
+#define DHID      @"1"
+#define DHSubID   @"1"
+#define DHAPI_key @"ba472a72208cb671639d94a54cbb017d"
 
 
 @interface ViewController ()
@@ -40,9 +40,9 @@
     
     //初始化SDK - 东海测试
 
-    [SDHSDK initWithDhId:48
-                   subId:61
-                  apiKey:@"a9a54fb8fe53b83b4352b1cbb0930ba8"
+    [SDHSDK initWithDhId:[DHID intValue]
+                   subId:[DHSubID intValue]
+                  apiKey:DHAPI_key
                  success:^{
                      
                      NSLog(@"初始化成功");
@@ -84,6 +84,7 @@
     }];
     
   
+    //注册回调方法
     [self registeredMethForCallBack];
     
 }
@@ -128,88 +129,6 @@
         
     }];
  
-}
-
-+ (NSString *)dictionaryToString:(NSDictionary *)parameters
-{
-    NSString *postString = [NSString new];
-    
-    NSString *strCom = [NSString new];
-    
-    NSArray *keyArray = [parameters allKeys];
-    NSString *strName = nil;
-    NSString *strValue = nil;
-    for (int i = 0; i < keyArray.count; i ++) {
-        
-        strName = keyArray[i];
-        strValue = parameters[keyArray[i]];
-        strValue = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                         (CFStringRef)strValue,
-                                                                                         NULL,
-                                                                                         (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                         kCFStringEncodingUTF8));
-        if (i == keyArray.count - 1) {
-            strCom = [NSString stringWithFormat:@"%@=%@",strName,strValue];
-        } else {
-            strCom = [NSString stringWithFormat:@"%@=%@&",strName,strValue];
-        }
-        
-        postString = [postString stringByAppendingString:strCom];
-    }
-    
-    return postString;
-}
-
-
-- (void)testMeth:(NSString *)accessToken{
-    
-    NSString *gameId = DHID;
-    NSString *subGameId = DHSubID;
-    NSString *apiKey = DHAPI_key;
-    
-    accessToken = @"f4ab3a771242407a98c27adc46f2da88971824d3e1d74b2f9caeb8b5273b9f8e";
-    
-    NSString *url = [NSString stringWithFormat:@"https://api.sdk.dhios.cn/open/verifyAccessToken"];
-    NSString *sign = [NSString stringWithFormat:@"%@=%@%@=%@%@=%@%@",@"accessToken",accessToken,@"gameId",gameId,@"subGameId",subGameId,apiKey];
-    
-    NSLog(@"sign后：：%@",sign);
-    
-    NSString *md5Str = [NSString md5:sign];
-    
-    NSLog(@"sign前：：%@",md5Str);
-    
-    NSDictionary *dic = @{@"accessToken":accessToken,
-                          @"gameId":gameId,
-                          @"subGameId":subGameId,
-                          @"sign": md5Str
-                          };
-    NSString *parametersString =  [ViewController dictionaryToString:dic];
-    NSLog(@"parametersString     %@ ",parametersString);
-    
-    NSURL *requestUrl = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
-    
-    [request setHTTPMethod:@"POST"];
-    if (parametersString) {
-        [request setHTTPBody:[parametersString dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-
-    NSOperationQueue *queue = [NSOperationQueue mainQueue];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data,NSError * _Nullable connectionError) {
-        if (connectionError == nil) {
-            
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            NSLog(@"请求结果%@,",responseObject);
-            NSString *code = responseObject[@"code"];
-            NSLog(@"code: %@",code);
-            NSString *userName = responseObject[@"data"][@"userName"];
-            NSLog(@"name：%@",userName);
-        }
-        else
-        {
-            
-        }
-    }];
 }
 
 
@@ -266,6 +185,89 @@
     
 }
 
+//验证登陆
+- (void)testMeth:(NSString *)accessToken{
+    
+    NSString *gameId = DHID;
+    NSString *subGameId = DHSubID;
+    NSString *apiKey = DHAPI_key;
+    
+    NSString *url = [NSString stringWithFormat:@"https://api.sdk.dhios.cn/open/verifyAccessToken"];
+    NSString *sign = [NSString stringWithFormat:@"%@=%@%@=%@%@=%@%@",@"accessToken",accessToken,@"gameId",gameId,@"subGameId",subGameId,apiKey];
+    
+    NSLog(@"sign前：：%@",sign);
+    
+    NSString *md5Sign = [NSString md5:sign];
+    
+    NSLog(@"sign后：：%@",md5Sign);
+    
+    NSDictionary *dic = @{@"accessToken":accessToken,
+                          @"gameId":gameId,
+                          @"subGameId":subGameId,
+                          @"sign": md5Sign
+                          };
+    NSString *parametersString =  [ViewController dictionaryToString:dic];
+    NSLog(@"parametersString     %@ ",parametersString);
+    
+    NSURL *requestUrl = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+    
+    [request setHTTPMethod:@"POST"];
+    if (parametersString) {
+        [request setHTTPBody:[parametersString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data,NSError * _Nullable connectionError) {
+        if (connectionError == nil) {
+            
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSLog(@"请求结果%@,",responseObject);
+            NSString *code = responseObject[@"code"];
+            NSLog(@"code: %@",code);
+            NSString *userName = responseObject[@"data"][@"userName"];
+            NSLog(@"name：%@",userName);
+        }
+        else
+        {
+            
+        }
+    }];
+}
+
+
+
+
+
++ (NSString *)dictionaryToString:(NSDictionary *)parameters
+{
+    NSString *postString = [NSString new];
+    
+    NSString *strCom = [NSString new];
+    
+    NSArray *keyArray = [parameters allKeys];
+    NSString *strName = nil;
+    NSString *strValue = nil;
+    for (int i = 0; i < keyArray.count; i ++) {
+        
+        strName = keyArray[i];
+        strValue = parameters[keyArray[i]];
+        strValue = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                         (CFStringRef)strValue,
+                                                                                         NULL,
+                                                                                         (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                         kCFStringEncodingUTF8));
+        if (i == keyArray.count - 1) {
+            strCom = [NSString stringWithFormat:@"%@=%@",strName,strValue];
+        } else {
+            strCom = [NSString stringWithFormat:@"%@=%@&",strName,strValue];
+        }
+        
+        postString = [postString stringByAppendingString:strCom];
+    }
+    
+    return postString;
+}
 
 
 
