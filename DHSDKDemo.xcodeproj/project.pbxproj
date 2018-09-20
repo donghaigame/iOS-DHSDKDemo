@@ -12,20 +12,21 @@
 		3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BB20F38E1E003B8B68 /* Main.storyboard */; };
 		3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */; };
 		3B11D8C520F38E1F003B8B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B11D8C420F38E1F003B8B68 /* main.m */; };
-		3B2DBA622137805900162DF6 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; };
-		3B2DBA632137805900162DF6 /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2DBA612137805900162DF6 /* DHSDK.xcassets */; };
-		3B2DBA642137806300162DF6 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; };
-		3B2DBA652137806300162DF6 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2DBA602137805900162DF6 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B3D32A521422DBC00BC5F46 /* NSObject+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D32A421422DBC00BC5F46 /* NSObject+MD5.m */; };
+		3B95A9EE21534DA5008468B0 /* 1.0.26更新内容.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3B95A9EA21534DA5008468B0 /* 1.0.26更新内容.rtf */; };
+		3B95A9EF21534DA5008468B0 /* DHSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B95A9EB21534DA5008468B0 /* DHSDK.framework */; };
+		3B95A9F021534DA5008468B0 /* DHSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B95A9EC21534DA5008468B0 /* DHSDK.xcassets */; };
+		3B95A9F221534F1E008468B0 /* DHSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B95A9EB21534DA5008468B0 /* DHSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3B11D8D220F390B5003B8B68 /* Embed Frameworks */ = {
+		3B734F302151FAC1007A707D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B2DBA652137806300162DF6 /* DHSDK.framework in Embed Frameworks */,
+				3B95A9F221534F1E008468B0 /* DHSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,8 +43,11 @@
 		3B11D8BE20F38E1F003B8B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B11D8C320F38E1F003B8B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B11D8C420F38E1F003B8B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3B2DBA602137805900162DF6 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
-		3B2DBA612137805900162DF6 /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
+		3B3D32A321422DBC00BC5F46 /* NSObject+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MD5.h"; sourceTree = "<group>"; };
+		3B3D32A421422DBC00BC5F46 /* NSObject+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MD5.m"; sourceTree = "<group>"; };
+		3B95A9EA21534DA5008468B0 /* 1.0.26更新内容.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "1.0.26更新内容.rtf"; sourceTree = "<group>"; };
+		3B95A9EB21534DA5008468B0 /* DHSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DHSDK.framework; sourceTree = "<group>"; };
+		3B95A9EC21534DA5008468B0 /* DHSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DHSDK.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B2DBA622137805900162DF6 /* DHSDK.framework in Frameworks */,
-				3B2DBA642137806300162DF6 /* DHSDK.framework in Frameworks */,
+				3B95A9EF21534DA5008468B0 /* DHSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 		3B11D8A920F38E1E003B8B68 = {
 			isa = PBXGroup;
 			children = (
+				3B95A9E821534DA5008468B0 /* DHSDK1.0.26 */,
 				3B11D8B420F38E1E003B8B68 /* DHSDKDemo */,
 				3B11D8B320F38E1E003B8B68 /* Products */,
 			);
@@ -78,9 +82,10 @@
 		3B11D8B420F38E1E003B8B68 /* DHSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3B2DBA5F2137805900162DF6 /* DHSDK1.0.25 */,
 				3B11D8B520F38E1E003B8B68 /* AppDelegate.h */,
 				3B11D8B620F38E1E003B8B68 /* AppDelegate.mm */,
+				3B3D32A321422DBC00BC5F46 /* NSObject+MD5.h */,
+				3B3D32A421422DBC00BC5F46 /* NSObject+MD5.m */,
 				3B11D8B820F38E1E003B8B68 /* ViewController.h */,
 				3B11D8B920F38E1E003B8B68 /* ViewController.m */,
 				3B11D8BB20F38E1E003B8B68 /* Main.storyboard */,
@@ -91,13 +96,15 @@
 			path = DHSDKDemo;
 			sourceTree = "<group>";
 		};
-		3B2DBA5F2137805900162DF6 /* DHSDK1.0.25 */ = {
+		3B95A9E821534DA5008468B0 /* DHSDK1.0.26 */ = {
 			isa = PBXGroup;
 			children = (
-				3B2DBA602137805900162DF6 /* DHSDK.framework */,
-				3B2DBA612137805900162DF6 /* DHSDK.xcassets */,
+				3B95A9EA21534DA5008468B0 /* 1.0.26更新内容.rtf */,
+				3B95A9EB21534DA5008468B0 /* DHSDK.framework */,
+				3B95A9EC21534DA5008468B0 /* DHSDK.xcassets */,
 			);
-			path = DHSDK1.0.25;
+			name = DHSDK1.0.26;
+			path = DHSDKDemo/DHSDK1.0.26;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,7 +117,7 @@
 				3B11D8AE20F38E1E003B8B68 /* Sources */,
 				3B11D8AF20F38E1E003B8B68 /* Frameworks */,
 				3B11D8B020F38E1E003B8B68 /* Resources */,
-				3B11D8D220F390B5003B8B68 /* Embed Frameworks */,
+				3B734F302151FAC1007A707D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,8 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B2DBA632137805900162DF6 /* DHSDK.xcassets in Resources */,
 				3B11D8BF20F38E1F003B8B68 /* Assets.xcassets in Resources */,
+				3B95A9EE21534DA5008468B0 /* 1.0.26更新内容.rtf in Resources */,
+				3B95A9F021534DA5008468B0 /* DHSDK.xcassets in Resources */,
 				3B11D8BD20F38E1E003B8B68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +181,7 @@
 			files = (
 				3B11D8BA20F38E1E003B8B68 /* ViewController.m in Sources */,
 				3B11D8C520F38E1F003B8B68 /* main.m in Sources */,
+				3B3D32A521422DBC00BC5F46 /* NSObject+MD5.m in Sources */,
 				3B11D8B720F38E1E003B8B68 /* AppDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZQS9GNTA96;
@@ -319,6 +328,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
 					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.25",
+					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.26",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -328,7 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhsdk.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ab9a4ba8-afac-4a5e-8814-531f6618e2f9";
+				PROVISIONING_PROFILE = "d2044dd3-e612-4b7d-b543-2ef365144bb0";
 				PROVISIONING_PROFILE_SPECIFIER = dh.sdk.deveopment;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -339,7 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZQS9GNTA96;
@@ -348,6 +358,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DHSDKDemo/framework",
 					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.25",
+					"$(PROJECT_DIR)/DHSDKDemo/DHSDK1.0.26",
 				);
 				INFOPLIST_FILE = DHSDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -357,7 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhsdk.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ab9a4ba8-afac-4a5e-8814-531f6618e2f9";
+				PROVISIONING_PROFILE = "d2044dd3-e612-4b7d-b543-2ef365144bb0";
 				PROVISIONING_PROFILE_SPECIFIER = dh.sdk.deveopment;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import <DHSDK/DHSDK.h>
+#import "NSObject+MD5.h"
 
-/**
- *  说明文档
- *  https://github.com/donghaigame/iOS-DHSDKDemo   客户端
- *  https://github.com/donghaigame/DHSDKServerDemo 服务端
- */
+
+
+#define DHID      @"48"
+#define DHSubID   @"61"
+#define DHAPI_key @"a9a54fb8fe53b83b4352b1cbb0930ba8"
+
 
 @interface ViewController ()
 {
@@ -29,11 +31,35 @@
     
     NSLog(@"SDK版本%@", [SDHSDK v]);
     
+    
+    /**
+     *  说明文档
+     *  https://github.com/donghaigame/iOS-DHSDKDemo   客户端
+     *  https://github.com/donghaigame/DHSDKServerDemo 服务端
+     */
+    
+    //初始化SDK - 东海测试
+
+    [SDHSDK initWithDhId:48
+                   subId:61
+                  apiKey:@"a9a54fb8fe53b83b4352b1cbb0930ba8"
+                 success:^{
+                     
+                     NSLog(@"初始化成功");
+                     
+                 } failure:^(int errcode, NSString *errorMessage) {
+                     
+                     
+                     
+                 }];
+    
+    
+    
     [super viewDidLoad];
 
     [self.view setBackgroundColor:[UIColor brownColor]];
     
-    _btnTitles = @[@"初始化",@"登 陆",@"支 付",@"用户中心",@"注 销"];
+    _btnTitles = @[@"登 陆",@"支 付",@"用户中心",@"注 销"];
     
     CGFloat topMar = 40;
     CGFloat lefMar = 40;
@@ -57,6 +83,7 @@
         
     }];
     
+  
     [self registeredMethForCallBack];
     
 }
@@ -75,37 +102,9 @@
         NSLog(@"userId      -- %@", userId);
         NSLog(@"userName    -- %@", userName);
         NSLog(@"accessToken -- %@", accessToken);
-        
-        //通过accessToken -> 去访问你们自己的校验接口 -> 再服务端去请求SDK服务器校验接口 - >拿到用户id 和用户名创建游戏账号并绑定 ->  有用户信息即可登陆游戏界面（大致流程）
-        
-        
-        if (lSS == DHLSBL) {
-            NSLog(@"登陆");
-        }
-        
-        else if (lSS == DHLSBR){
-            NSLog(@"注册——》 登陆");
-        }
-        
-        
-        //在相应的位置-自行调用上传角色信息
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-        NSString *dateTime = [formatter stringFromDate:date];
-        
-        
-        DHRole *role = [DHRole new];
-        [role setServerId:@"serverId1"];
-        [role setServerName:@"紫级墨瞳"];
-        [role setRoleId:@"9527"];
-        [role setRoleName:@"唐三"];
-        [role setRoleLevel:1];
-        [role setLoginTime:dateTime];
-        [SDHSDK reportRole:role];
-        
+  
+        //登陆验证
+        [self testMeth:accessToken];
         
     }];
     
@@ -113,7 +112,7 @@
     [SDHSDK setLogoutCallBack:^{
         //浮动按钮中有个 切换账号，
         //通过这个方法 初始化游戏,切换到登陆界面等操作
-        
+
     }];
     
     //IAP支付  - 回调
@@ -131,6 +130,88 @@
  
 }
 
++ (NSString *)dictionaryToString:(NSDictionary *)parameters
+{
+    NSString *postString = [NSString new];
+    
+    NSString *strCom = [NSString new];
+    
+    NSArray *keyArray = [parameters allKeys];
+    NSString *strName = nil;
+    NSString *strValue = nil;
+    for (int i = 0; i < keyArray.count; i ++) {
+        
+        strName = keyArray[i];
+        strValue = parameters[keyArray[i]];
+        strValue = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                         (CFStringRef)strValue,
+                                                                                         NULL,
+                                                                                         (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                         kCFStringEncodingUTF8));
+        if (i == keyArray.count - 1) {
+            strCom = [NSString stringWithFormat:@"%@=%@",strName,strValue];
+        } else {
+            strCom = [NSString stringWithFormat:@"%@=%@&",strName,strValue];
+        }
+        
+        postString = [postString stringByAppendingString:strCom];
+    }
+    
+    return postString;
+}
+
+
+- (void)testMeth:(NSString *)accessToken{
+    
+    NSString *gameId = DHID;
+    NSString *subGameId = DHSubID;
+    NSString *apiKey = DHAPI_key;
+    
+    accessToken = @"f4ab3a771242407a98c27adc46f2da88971824d3e1d74b2f9caeb8b5273b9f8e";
+    
+    NSString *url = [NSString stringWithFormat:@"https://api.sdk.dhios.cn/open/verifyAccessToken"];
+    NSString *sign = [NSString stringWithFormat:@"%@=%@%@=%@%@=%@%@",@"accessToken",accessToken,@"gameId",gameId,@"subGameId",subGameId,apiKey];
+    
+    NSLog(@"sign后：：%@",sign);
+    
+    NSString *md5Str = [NSString md5:sign];
+    
+    NSLog(@"sign前：：%@",md5Str);
+    
+    NSDictionary *dic = @{@"accessToken":accessToken,
+                          @"gameId":gameId,
+                          @"subGameId":subGameId,
+                          @"sign": md5Str
+                          };
+    NSString *parametersString =  [ViewController dictionaryToString:dic];
+    NSLog(@"parametersString     %@ ",parametersString);
+    
+    NSURL *requestUrl = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+    
+    [request setHTTPMethod:@"POST"];
+    if (parametersString) {
+        [request setHTTPBody:[parametersString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data,NSError * _Nullable connectionError) {
+        if (connectionError == nil) {
+            
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSLog(@"请求结果%@,",responseObject);
+            NSString *code = responseObject[@"code"];
+            NSLog(@"code: %@",code);
+            NSString *userName = responseObject[@"data"][@"userName"];
+            NSLog(@"name：%@",userName);
+        }
+        else
+        {
+            
+        }
+    }];
+}
+
 
 #pragma mark - 按钮点击事件
 
@@ -138,24 +219,8 @@
     
     
     switch (sender.tag) {
-        
-        //初始化
-        case 0:{
-            
-            [SDHSDK initWithGameId:1
-                         subGameId:1
-                            apiKey:@"ba472a72208cb671639d94a54cbb017d"
-                           success:^{
-                               NSLog(@"初始化成功");
-                           }
-                           failure:^(int errcode, NSString *errorMessage) {
-                               NSLog(@"初始化失败");
-                           }];
-            
-        }
-            break;
     
-        case 1:{
+        case 0:{
             //登陆
             [SDHSDK login];
 
@@ -164,16 +229,16 @@
             break;
             
             //支付
-        case 2:{
+        case 1:{
             
             DHOrder *order = [DHOrder new];
-            order.serverId =@"205";
-            order.roleId = @"1000001325020563";
-            order.roleName =@"费思远";
+            order.serverId =@"10086";
+            order.roleId = @"10086";
+            order.roleName =@"东海支付测试";
             order.productName =@"60元宝";
             order.customInfo = @"自定义内容";
             //cp创建订单号
-            order.cpOrderId = @"12321423253";
+            order.cpOrderId = @"123456abcdefg";
             order.productDescription = @"60个砖石";
             order.productId = @"com.dhsdk.demo.6";
             order.totalFee = 600; //分制
@@ -183,14 +248,14 @@
             break;
             
             //用户中心
-        case 3:{
+        case 2:{
            [SDHSDK userCenter];
            
         }
             break;
             
             //注销登出
-        case 4:{
+        case 3:{
             [SDHSDK logoutAccount];
             
         }
